@@ -75,3 +75,8 @@ temp/
 
 # Local working files
 cell_review.txt
+# Trained model artifacts
+artifacts/models/**/*.joblib
+artifacts/models/**/*.pkl
+artifacts/models/**/*.pickle
+artifacts/models/**/executed_*.ipynb
