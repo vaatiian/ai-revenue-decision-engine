@@ -1,0 +1,76 @@
+{
+  "architecture": {
+    "formula": "0.90 * seasonal_52_week_analogue + 0.10 * trailing_4_week_average_at_origin",
+    "recent_weight": 0.1,
+    "recent_window_weeks": 4,
+    "seasonal_lag_weeks": 52,
+    "seasonal_weight": 0.9
+  },
+  "calendar_governance": {
+    "partial_end_week": "excluded",
+    "partial_start_week": "excluded",
+    "unknown_interior_missing_weeks": "fail_closed",
+    "week_frequency": "W-SUN",
+    "zero_trading_week_periods": [
+      "2009-12-28/2010-01-03",
+      "2010-12-27/2011-01-02"
+    ]
+  },
+  "final_research_model_name": "Seasonal Blend 0.9",
+  "forecast_frequency": "Weekly",
+  "forecast_horizons_weeks": [
+    1,
+    2,
+    4
+  ],
+  "governance": {
+    "architecture_frozen": true,
+    "decision": "GO",
+    "decision_description": "GO for operational demand planning",
+    "post_freeze_tuning_permitted": false,
+    "weight_tuning_closed": true
+  },
+  "model_name": "Seasonal / Recent Weekly Revenue Blend",
+  "model_type": "deterministic_forecast",
+  "model_version": "1.0.0",
+  "planning_ranges": {
+    "interpretation": "Historical planning ranges; not independently calibrated guaranteed future prediction intervals",
+    "method": "Empirical historical residual quantiles"
+  },
+  "reported_historical_performance": {
+    "approx_four_week_aggregate_forecast_actual": 0.977,
+    "approx_four_week_aggregate_wape": 0.0916,
+    "approx_horizon_forecast_actual": {
+      "1": 0.974,
+      "2": 0.974,
+      "4": 0.975
+    },
+    "approx_horizon_wape": {
+      "1": 0.1652,
+      "2": 0.1668,
+      "4": 0.1684
+    }
+  },
+  "serialized_model_required": false,
+  "source_files": {
+    "production_scorer": "src\\models\\demand_scorer.py",
+    "production_spec": "src\\models\\demand_spec.py",
+    "research_notebook": "notebooks\\07_ML_Demand_Forecasting.ipynb",
+    "weekly_feature_engine": "src\\features\\demand_model_features.py"
+  },
+  "source_sha256": {
+    "production_scorer": "1d618b513fcce563d476fa3c8da0a2684f5b003dc6d22d42de91759a25e09c71",
+    "production_spec": "15f53fa277c16cea14ff61353bf8fce557c51bdca516626cc7a8390b004dc3ea",
+    "research_notebook": "ef4ff6138099e519d22fcff2ccbfe642a2aec44a65bec404ce7d212f43826d43",
+    "weekly_feature_engine": "4a2e1477747b9730391f860679fcf30d73e69a660f555317ddee0da2107ee41e"
+  },
+  "target_description": "Weekly qualifying positive merchandise revenue",
+  "target_name": "weekly_positive_merchandise_revenue",
+  "validation": {
+    "final_holdout_status": "No pristine final holdout remains",
+    "method": "Temporal backtesting / multi-horizon historical evaluation",
+    "primary_metric": "WAPE",
+    "weight_tuning_closed": true
+  },
+  "week_frequency": "W-SUN"
+}
