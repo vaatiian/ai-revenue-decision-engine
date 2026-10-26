@@ -1,0 +1,92 @@
+{
+  "manifest_schema_version": "1.0.0",
+  "model_name": "Customer Repeat Frequency + Item-to-Item Affinity",
+  "model_version": "1.0.0",
+  "model_type": "ranking",
+  "target_name": "next_qualifying_order_products",
+  "target_description": "products appearing in next qualifying order",
+  "artifact_type": "deterministic_algorithm",
+  "serialized_model_artifact_required": false,
+  "architecture": {
+    "repeat_channel": "Customer Repeat Frequency",
+    "discovery_channel": "Item-to-Item Affinity",
+    "optional_hybrid": "70% Repeat / 30% Discovery",
+    "hybrid_role": "optional presentation layer only"
+  },
+  "outcome_window_days": 90,
+  "repeat_channel": {
+    "model_name": "Customer Repeat Frequency",
+    "primary_sort": "purchase_orders",
+    "primary_sort_ascending": false,
+    "tie_break": "last_purchase",
+    "tie_break_ascending": false,
+    "research_decision": "GO",
+    "approved_use": "operational next-product replenishment recommendation"
+  },
+  "discovery_channel": {
+    "model_name": "Item-to-Item Affinity",
+    "similarity_name": "cosine-style basket co-occurrence",
+    "similarity_formula": "pair_order_count / sqrt(item_a_order_count * item_b_order_count)",
+    "minimum_item_orders": 5,
+    "minimum_pair_orders": 2,
+    "source_weight_formula": "log1p(customer source-product purchase orders)",
+    "exclude_customer_history": true,
+    "fallback": "global historical product popularity",
+    "research_decision": "CONDITIONAL GO",
+    "approved_use": "product discovery, cross-sell experimentation and merchandising support",
+    "prohibited_interpretation": "guaranteed next-purchase prediction"
+  },
+  "hybrid": {
+    "name": "70% Repeat / 30% Discovery",
+    "repeat_fraction": 0.7,
+    "discovery_fraction": 0.3,
+    "fill_order": [
+      "repeat",
+      "discovery"
+    ],
+    "role": "optional presentation layer only"
+  },
+  "recommendation_depths": {
+    "evaluation_depths": [
+      5,
+      10,
+      20
+    ],
+    "production_default_top_n": 20
+  },
+  "temporal_governance": {
+    "global_history_rule": "basket affinity and product popularity use only baskets strictly before the relevant prediction month",
+    "customer_history_rule": "customer-specific purchase history may include transactions through the customer's prediction order",
+    "future_information_allowed": false
+  },
+  "metrics": {
+    "primary_general_metrics": [
+      "Hit Rate",
+      "Recall"
+    ],
+    "primary_discovery_metric": "Cross-Sell Hit Rate"
+  },
+  "development_periods": {
+    "validation_start": "2011-03",
+    "validation_end": "2011-04",
+    "test_start": "2011-07",
+    "test_end": "2011-08"
+  },
+  "holdout_governance": {
+    "holdout_consumed": true,
+    "post_holdout_tuning_permitted": false
+  },
+  "final_holdout_performance": {
+    "repeat_hit_rate_at_10": 0.705912,
+    "repeat_hit_rate_at_20": 0.792319,
+    "repeat_eligible_hit_rate_at_20": 0.870896,
+    "discovery_hit_rate_at_10": 0.21601,
+    "discovery_hit_rate_at_20": 0.299238,
+    "hybrid_hit_rate_at_20": 0.774634
+  },
+  "governed_source_sha256": {
+    "src/models/recommendation_spec.py": "64e5e22fc4f1ef3185ab1d4dc6b0f280c4ac99304ef52d8dee1272e3f26d223a",
+    "src/models/recommendation_engine.py": "dac75527ca93d8c283a06816955016bb9272bec995d2f7e2a46b69cda6320b3c",
+    "src/models/recommendation_scorer.py": "5d9a67751bc2bb8f94bcc9687f68ac15b8172017b09596f1fe18daae9ff4709f"
+  }
+}
