@@ -1,0 +1,102 @@
+{
+  "model_name": "Drop-First Interpretable Logistic Regression",
+  "model_version": "1.0.0",
+  "model_type": "binary_classifier",
+  "target_name": "repeat_within_90d",
+  "business_target": "Second observable qualifying purchase within 90 days",
+  "prediction_point": "Immediately after first observable order",
+  "prediction_unit": "One observable newly acquired customer",
+  "prediction_horizon_days": 90,
+  "feature_count": 18,
+  "numeric_feature_count": 17,
+  "categorical_feature_count": 1,
+  "features": [
+    "first_order_value",
+    "first_order_units",
+    "first_order_product_count",
+    "first_order_average_unit_price",
+    "first_order_line_count",
+    "first_order_max_unit_price",
+    "first_order_min_unit_price",
+    "first_order_price_std",
+    "first_order_max_line_quantity",
+    "first_order_mean_line_quantity",
+    "units_per_product",
+    "revenue_per_product",
+    "revenue_per_unit",
+    "first_order_month_number",
+    "first_order_weekday",
+    "first_order_hour",
+    "first_order_is_weekend",
+    "first_order_region"
+  ],
+  "numeric_features": [
+    "first_order_value",
+    "first_order_units",
+    "first_order_product_count",
+    "first_order_average_unit_price",
+    "first_order_line_count",
+    "first_order_max_unit_price",
+    "first_order_min_unit_price",
+    "first_order_price_std",
+    "first_order_max_line_quantity",
+    "first_order_mean_line_quantity",
+    "units_per_product",
+    "revenue_per_product",
+    "revenue_per_unit",
+    "first_order_month_number",
+    "first_order_weekday",
+    "first_order_hour",
+    "first_order_is_weekend"
+  ],
+  "categorical_features": [
+    "first_order_region"
+  ],
+  "algorithm": "LogisticRegression",
+  "hyperparameters": {
+    "max_iter": 3000,
+    "random_state": 42
+  },
+  "preprocessing": {
+    "numeric_imputation": "median",
+    "numeric_scaling": "StandardScaler",
+    "categorical_imputation": "most_frequent",
+    "onehot_handle_unknown": "ignore",
+    "onehot_drop": "first"
+  },
+  "calibration": null,
+  "training_population": "Combined chronological Train + Validation development population",
+  "evaluation_population": "Previously untouched later temporal Test population",
+  "primary_metric": "PR-AUC",
+  "commercial_metrics": [
+    "Lift@10%",
+    "Lift@20%",
+    "repeater capture"
+  ],
+  "reported_final_test_metrics": {
+    "pr_auc": 0.503,
+    "roc_auc": 0.56,
+    "brier_score": 0.248,
+    "lift_at_10": 1.03,
+    "lift_at_20": 1.11,
+    "calibration_error_percentage_points": 4.71
+  },
+  "governance_decision": "CONDITIONAL GO",
+  "recommended_use": "Customer prioritisation and controlled retention experimentation",
+  "prohibited_interpretations": [
+    "Causal treatment decisions",
+    "Guaranteed individual probabilities",
+    "Permanent churn inference"
+  ],
+  "test_set_consumed": true,
+  "post_test_tuning_allowed": false,
+  "serialized_model_artifact_required": true,
+  "artifact_filename": "repeat_purchase_logistic_v1.0.0.joblib",
+  "source_notebook": "notebooks\\02_ML_Repeat_Purchase_Model.ipynb",
+  "source_notebook_sha256": "68e528360f7d516e91ea115c76df2cb888035d55883bae41c00aee2d47fd57c9",
+  "model_artifact_sha256": "901226110e49babaf7f87311b6ebc84ec847e447756786319acf5638cb2b47e1",
+  "production_spec_sha256": "75fcc729a34e2d9fbcac7a8d5652d25a9f6e2d2cfe9874d8724b669bc33252df",
+  "production_feature_engine_sha256": "ce70e1c65b542ee3b15ad9e987da242d191260c80e26b94a93dec5231e80b75e",
+  "production_scorer_sha256": "215573f8034612e5e6022f5b311f5d93ce355ba7b93dee61282e09f4bb91d813",
+  "sklearn_version": "1.8.0"
+}
