@@ -97,9 +97,6 @@ def make_reactivation_features():
             "customer": [
                 "A",
             ],
-            "prediction_date": [
-                DECISION_DATE,
-            ],
             "reactivation_feature": [
                 1.0,
             ],
@@ -114,7 +111,7 @@ def make_leakage_features():
             "customer": [
                 "A",
             ],
-            "baseline_revenue": [
+            "b90_revenue": [
                 100.0,
             ],
             "leakage_feature": [
@@ -502,6 +499,8 @@ def test_customer_batch_builds_scores_and_calls_decision_engine(
         decisions,
     )
 
+    # Frozen model inputs remain untouched.
+
     pd.testing.assert_frame_equal(
         captured[
             "reactivation_score_input"
@@ -545,13 +544,31 @@ def test_customer_batch_builds_scores_and_calls_decision_engine(
         FIXED_SCORED_AT
     )
 
-    expected_leakage_context = (
-        leakage_features[
-            [
-                "customer",
-                "baseline_revenue",
-            ]
-        ]
+    # Reactivation provenance is restored only for Decision Engine context.
+
+    expected_reactivation_context = pd.DataFrame(
+        {
+            "customer": [
+                "A",
+            ],
+            "prediction_date": [
+                DECISION_DATE,
+            ],
+        }
+    )
+
+    # Leakage economic context maps the frozen b90_revenue feature
+    # into the Decision Engine's semantic baseline_revenue name.
+
+    expected_leakage_context = pd.DataFrame(
+        {
+            "customer": [
+                "A",
+            ],
+            "baseline_revenue": [
+                100.0,
+            ],
+        }
     )
 
     pd.testing.assert_frame_equal(
@@ -603,7 +620,7 @@ def test_customer_batch_builds_scores_and_calls_decision_engine(
         decision_kwargs[
             "reactivation_features"
         ],
-        reactivation_features,
+        expected_reactivation_context,
     )
 
     pd.testing.assert_frame_equal(
@@ -890,11 +907,44 @@ def test_empty_feature_populations_do_not_invoke_scorers(
 
 
 # ================================================================
+# REACTIVATION PROVENANCE GOVERNANCE
+# ================================================================
+
+
+def test_nonempty_reactivation_features_require_customer(
+    monkeypatch,
+):
+
+    monkeypatch.setattr(
+        customer_batch_module,
+        "build_reactivation_model_features",
+        lambda **kwargs: pd.DataFrame(
+            {
+                "some_feature": [
+                    1.0,
+                ],
+            }
+        ),
+    )
+
+    with pytest.raises(
+        RuntimeError,
+        match=(
+            "Reactivation feature frame is missing customer"
+        ),
+    ):
+        run_customer_decision_batch(
+            transactions=make_transactions(),
+            decision_date=DECISION_DATE,
+        )
+
+
+# ================================================================
 # LEAKAGE CONTEXT GOVERNANCE
 # ================================================================
 
 
-def test_nonempty_leakage_features_require_baseline_revenue(
+def test_nonempty_leakage_features_require_b90_revenue(
     monkeypatch,
 ):
 
@@ -922,7 +972,8 @@ def test_nonempty_leakage_features_require_baseline_revenue(
     with pytest.raises(
         RuntimeError,
         match=(
-            "baseline_revenue required by the Decision Engine"
+            "b90_revenue required to construct "
+            "Decision Engine baseline_revenue context"
         ),
     ):
         run_customer_decision_batch(

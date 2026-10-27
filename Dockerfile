@@ -32,6 +32,9 @@ RUN python -m pip install \
 
 COPY src ./src
 
+COPY scripts/run_scheduled_job.sh \
+     ./scripts/run_scheduled_job.sh
+
 
 # ================================================================
 # GOVERNED MODEL MANIFESTS
@@ -60,6 +63,7 @@ COPY notebooks/07_ML_Demand_Forecasting.ipynb \
 
 RUN addgroup --system app \
     && adduser --system --ingroup app app \
+    && chmod 0755 /app/scripts/run_scheduled_job.sh \
     && chown -R app:app /app
 
 USER app
@@ -68,8 +72,9 @@ USER app
 # ================================================================
 # DEFAULT OPERATION
 #
-# This is intentionally a one-shot operational image, not a web
-# server. Phase 12 will add scheduled execution.
+# This remains intentionally a one-shot operational image.
+# External schedulers invoke scripts/run_scheduled_job.sh with an
+# explicit governed job name and business boundary.
 # ================================================================
 
 CMD ["python", "-m", "src.cli", "health"]

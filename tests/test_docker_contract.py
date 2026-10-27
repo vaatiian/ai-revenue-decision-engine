@@ -428,3 +428,31 @@ def test_sklearn_is_pinned_to_governed_artifact_version():
         in
         content
     )
+def test_dockerfile_copies_scheduler_wrapper():
+
+    content = (
+        read_text(
+            DOCKERFILE
+        )
+    )
+
+    assert (
+        "scripts/run_scheduled_job.sh"
+        in
+        content
+    )
+
+
+def test_dockerfile_makes_scheduler_wrapper_executable():
+
+    content = (
+        read_text(
+            DOCKERFILE
+        )
+    )
+
+    assert (
+        "chmod 0755 /app/scripts/run_scheduled_job.sh"
+        in
+        content
+    )

@@ -9,6 +9,8 @@ Responsibilities
 - validate the monthly decision boundary;
 - construct frozen production feature frames;
 - score only eligible customer populations;
+- restore Reactivation prediction-date provenance from the explicit
+  batch boundary without changing the frozen model feature matrix;
 - derive Revenue Leakage economic context from the same feature frame
   that was scored;
 - optionally score governed recommendation episodes;
@@ -21,15 +23,13 @@ This module does not:
 - retrain models;
 - change model governance;
 - change Decision Engine policy;
+- modify frozen model feature schemas;
 - invent recommendation episodes;
 - reconstruct future-conditioned research evaluation populations;
 - build delivery payloads;
 - write files;
 - append audit ledgers;
 - schedule execution.
-
-Delivery, persistence, CLI handling, and scheduling are added in later
-Phase 12 subphases.
 """
 
 from __future__ import annotations
@@ -288,14 +288,37 @@ def run_customer_decision_batch(
     )
 
     reactivation_scores = None
+    reactivation_context = None
 
     if not reactivation_features.empty:
+
+        if (
+            "customer"
+            not in reactivation_features.columns
+        ):
+            raise RuntimeError(
+                "Reactivation feature frame is missing customer."
+            )
+
         reactivation_scores = (
             ReactivationScorer()
             .score(
                 reactivation_features
             )
         )
+
+        reactivation_context = (
+            reactivation_features[
+                [
+                    "customer",
+                ]
+            ]
+            .copy()
+        )
+
+        reactivation_context[
+            "prediction_date"
+        ] = resolved_decision_date
 
     # ------------------------------------------------------------
     # REVENUE LEAKAGE
@@ -324,12 +347,13 @@ def run_customer_decision_batch(
             )
 
         if (
-            "baseline_revenue"
+            "b90_revenue"
             not in leakage_features.columns
         ):
             raise RuntimeError(
                 "Revenue Leakage feature frame is missing "
-                "baseline_revenue required by the Decision Engine."
+                "b90_revenue required to construct "
+                "Decision Engine baseline_revenue context."
             )
 
         leakage_scores = (
@@ -343,9 +367,15 @@ def run_customer_decision_batch(
             leakage_features[
                 [
                     "customer",
-                    "baseline_revenue",
+                    "b90_revenue",
                 ]
             ]
+            .rename(
+                columns={
+                    "b90_revenue":
+                        "baseline_revenue",
+                }
+            )
             .copy()
         )
 
@@ -418,9 +448,7 @@ def run_customer_decision_batch(
             reactivation_scores
         ),
         reactivation_features=(
-            reactivation_features
-            if reactivation_scores is not None
-            else None
+            reactivation_context
         ),
         recommendation_scores=(
             recommendation_scores
