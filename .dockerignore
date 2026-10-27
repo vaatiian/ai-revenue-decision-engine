@@ -1,0 +1,115 @@
+# ================================================================
+# VERSION CONTROL
+# ================================================================
+
+.git
+.gitignore
+
+
+# ================================================================
+# PYTHON / TEST CACHES
+# ================================================================
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+
+# ================================================================
+# LOCAL ENVIRONMENTS
+# ================================================================
+
+.venv/
+venv/
+env/
+
+
+# ================================================================
+# IDE / OS
+# ================================================================
+
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+
+# ================================================================
+# NOTEBOOK / RESEARCH WORKSPACE
+#
+# Research notebooks are excluded by default.
+# The governed demand source notebook is explicitly retained because
+# its SHA-256 is part of the production demand manifest contract.
+# ================================================================
+
+.ipynb_checkpoints/
+*.ipynb
+
+!notebooks/07_ML_Demand_Forecasting.ipynb
+
+decision_engine_research_temp.txt
+recommendation_research_temp.py
+cell_review.txt
+
+
+# ================================================================
+# RAW / LOCAL DATA
+# ================================================================
+
+*.csv
+*.xlsx
+*.xls
+*.parquet
+*.feather
+*.pickle
+*.pkl
+
+data/
+outputs/
+model_outputs/
+
+
+# ================================================================
+# LOCAL SECRETS
+# ================================================================
+
+.env
+.env.*
+secrets/
+credentials.json
+service-account*.json
+*.pem
+*.key
+*.crt
+
+
+# ================================================================
+# RUNTIME STATE
+# ================================================================
+
+artifacts/experiments/
+artifacts/delivery/
+
+
+# ================================================================
+# UNTRACKED MODEL BINARIES
+#
+# Production model binaries are supplied at runtime through the
+# governed model-artifact mount. Tracked JSON manifests remain in
+# the image.
+# ================================================================
+
+artifacts/models/**/*.joblib
+artifacts/models/**/*.pkl
+artifacts/models/**/*.pickle
+artifacts/models/**/executed_*.ipynb
+
+
+# ================================================================
+# TESTS ARE NOT REQUIRED IN THE PRODUCTION IMAGE
+# ================================================================
+
+tests/
