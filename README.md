@@ -9,6 +9,12 @@ The project connects predictive models to deterministic business policies, produ
 
 **This is more than a collection of machine learning notebooks. It demonstrates the engineering required to turn predictions into governed operational decisions.**
 
+### Revenue OS — Executive Command Centre
+
+![Revenue OS Executive Overview](docs/screenshots/01-executive-overview.png)
+
+*Premium executive interface showing the governed journey from retail transactions to decisions, with verified historical execution and engineering evidence.*
+
 ## At a Glance
 
 | Verified project evidence | Result |
@@ -18,7 +24,7 @@ The project connects predictive models to deterministic business policies, produ
 | Customer decisions generated in Docker smoke execution | 5,220 |
 | Repeat-purchase scores generated in Docker smoke execution | 4,269 |
 | Governed demand forecast horizons | 1, 2 and 4 weeks |
-| Automated regression tests passing | 1,840 |
+| Automated regression tests passing | 1,850 |
 | Test modules | 91 |
 | Explicit test functions | 1,644 |
 | Production batch jobs | 3 |
@@ -171,6 +177,44 @@ Production model binaries and operational state are kept separate from the curat
 
 The Streamlit application provides an executive and technical exploration layer over portfolio-safe outputs.
 
+### Explore the Revenue OS Platform
+
+The interactive portfolio provides executive and technical views of the same governed production system.
+
+#### Revenue Command Centre
+
+![Revenue Command Centre](docs/screenshots/02-revenue-command-centre.png)
+
+*Explore the historical customer-decision snapshot through filters, commercial metrics, action priorities, and governance disclosures.*
+
+#### Risk × Value Intelligence
+
+![Risk and Future Customer Value](docs/screenshots/03-risk-value-intelligence.png)
+
+*Examine governed leakage probabilities alongside modelled future customer value. Bubble size represents observed lifetime revenue; colour represents the governed action.*
+
+#### Customer Decision Explorer
+
+![Customer Decision Explorer](docs/screenshots/04-customer-decision-explorer.png)
+
+*Inspect anonymised customer-level decisions, supporting historical evidence, priority classification, and recommended actions.*
+
+#### Governance Dashboard
+
+![Governance Dashboard](docs/screenshots/05-governance-dashboard.png)
+
+*Distinguish technical availability, governance permission, customer-decision inclusion, and supported commercial claims.*
+
+#### Production Architecture Visuals
+
+![Production Architecture Visuals](docs/screenshots/06-architecture-visuals.png)
+
+*Explore the boundary between governed customer-decision inputs, the deterministic Decision Engine, and standalone production intelligence systems.*
+
+**Evidence boundary:** These screenshots contain curated, anonymised historical outputs. They do not demonstrate realised commercial uplift or unrestricted autonomous interventions.
+
+
+
 Launch locally:
 
 ```bash
@@ -205,17 +249,21 @@ Selected lightweight decision-policy functionality can be demonstrated interacti
 The latest completed full regression reported:
 
 ```text
-1840 passed, 1 warning
+1850 passed, 1 warning
 ```
 
-The test inventory comprises:
+The following test-module and explicit-function inventory reflects an earlier audited snapshot; the latest total executed test count is 1,850.
 
-| Evidence | Verified count |
+The latest verified full regression comprises:
+
+| Evidence | Verified result |
 |---|---:|
-| Collected regression cases | 1,840 |
-| Explicit test functions | 1,644 |
-| Collection expansion | 196 |
-| Test modules | 91 |
+| Automated regression tests passing | 1,850 |
+| Portfolio-specific tests passing | 254 |
+| Test failures | 0 |
+| Nonfatal warnings | 1 |
+
+The earlier test inventory recorded 91 modules, 1,644 explicit test functions, and 196 collection-expanded cases. Those historical breakdown figures have not yet been recalculated for the latest regression.
 
 The known non-fatal warning occurs in the Repeat Purchase invalid-date handling test, where pandas reports a date-parsing format inference warning.
 
@@ -235,7 +283,7 @@ Portfolio-focused regression:
 python -m pytest tests/test_portfolio_*.py -q
 ```
 
-The latest verified portfolio suite passed **244 tests**.
+The latest verified portfolio suite passed **254 tests**.
 
 ### Docker Smoke-Test Evidence
 
@@ -625,7 +673,7 @@ The public portfolio is an inspection and demonstration interface. The productio
 
 ### Remaining Portfolio Release Work
 
-- Final GitHub documentation and screenshots
+- Final GitHub documentation and screenshot publication verification
 - Demo media
 - Portfolio application testing
 - End-to-end quality assurance
