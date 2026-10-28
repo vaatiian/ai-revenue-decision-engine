@@ -56,6 +56,9 @@ from portfolio.production_architecture_page import (
     render_production_architecture,
 )
 
+from portfolio.architecture_visuals_page import (
+    render_architecture_visuals,
+)
 from portfolio.testing_reliability_page import (
     render_testing_reliability,
 )
@@ -158,6 +161,7 @@ def render_sidebar() -> str:
             "ML / Model Explorer",
             "Governance Dashboard",
             "Production Architecture",
+	    "Architecture Visuals",
             "Testing & Reliability",
             "Production Evidence",
         ],
@@ -1174,6 +1178,12 @@ def main() -> None:
             bundle,
         )
 
+    elif page == "Architecture Visuals":
+
+        render_architecture_visuals(
+            st,
+            bundle,
+        )
     elif page == "Testing & Reliability":
 
         render_testing_reliability(

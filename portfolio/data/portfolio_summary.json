@@ -34,7 +34,7 @@
   },
   "schema_version": "1.0.0",
   "verified_evidence": {
-    "automated_tests_passing": 1801,
+    "automated_tests_passing": 1840,
     "customer_decisions_generated": 5220,
     "governed_demand_horizons": [
       1,
