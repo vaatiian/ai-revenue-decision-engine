@@ -263,3 +263,41 @@ def test_public_startup_errors_do_not_expose_exception_details():
     )
 
     assert "st.stop()" in app_source
+
+def test_global_styles_execute_inside_main_on_every_rerun():
+    """Cloud wrapper must reapply CSS whenever main() executes."""
+    import ast
+
+    app_source = (
+        PROJECT_ROOT / "app.py"
+    ).read_text(encoding="utf-8")
+
+    tree = ast.parse(app_source)
+
+    main_function = next(
+        node
+        for node in tree.body
+        if isinstance(node, ast.FunctionDef)
+        and node.name == "main"
+    )
+
+    style_calls = [
+        node
+        for node in ast.walk(main_function)
+        if isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Name)
+        and node.func.id == "apply_global_styles"
+    ]
+
+    assert len(style_calls) == 1
+
+    module_level_calls = [
+        node
+        for node in tree.body
+        if isinstance(node, ast.Expr)
+        and isinstance(node.value, ast.Call)
+        and isinstance(node.value.func, ast.Name)
+        and node.value.func.id == "apply_global_styles"
+    ]
+
+    assert not module_level_calls

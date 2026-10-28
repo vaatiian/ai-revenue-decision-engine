@@ -55,8 +55,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-apply_global_styles(st)
-
 
 @st.cache_data(show_spinner=False)
 def get_portfolio_bundle():
@@ -834,6 +832,11 @@ def render_production_evidence(bundle) -> None:
 
 def main() -> None:
     """Application entry point."""
+
+    # Apply the complete Revenue OS design system on every rerun.
+    # The cloud deployment wrapper imports this module only once,
+    # but invokes main() whenever Streamlit reruns the script.
+    apply_global_styles(st)
 
     try:
         bundle = get_portfolio_bundle()
