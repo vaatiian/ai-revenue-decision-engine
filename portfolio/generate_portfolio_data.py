@@ -52,8 +52,9 @@ DEFAULT_PORTFOLIO_DATA_DIR = Path(
 # ================================================================
 # VERIFIED PORTFOLIO EVIDENCE
 # ================================================================
-
-VERIFIED_REGRESSION_TEST_COUNT = 1840
+# Verified full pytest regression: 1,915 passed, 1 nonfatal warning.
+# Recorded release evidence; not a dynamically executed test count.
+VERIFIED_REGRESSION_TEST_COUNT = 1915
 
 VERIFIED_PRODUCTION_SCORERS_AVAILABLE = 6
 

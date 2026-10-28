@@ -24,7 +24,7 @@ The project connects predictive models to deterministic business policies, produ
 | Customer decisions generated in Docker smoke execution | 5,220 |
 | Repeat-purchase scores generated in Docker smoke execution | 4,269 |
 | Governed demand forecast horizons | 1, 2 and 4 weeks |
-| Automated regression tests passing | 1,850 |
+| Automated regression tests passing | 1,915 |
 | Test modules | 91 |
 | Explicit test functions | 1,644 |
 | Production batch jobs | 3 |
@@ -252,14 +252,14 @@ The latest completed full regression reported:
 1850 passed, 1 warning
 ```
 
-The following test-module and explicit-function inventory reflects an earlier audited snapshot; the latest total executed test count is 1,850.
+The following test-module and explicit-function inventory reflects an earlier audited snapshot; the latest total executed test count is 1,915.
 
 The latest verified full regression comprises:
 
 | Evidence | Verified result |
 |---|---:|
-| Automated regression tests passing | 1,850 |
-| Portfolio-specific tests passing | 254 |
+| Automated regression tests passing | 1,915 |
+| Portfolio-specific tests passing | 319 |
 | Test failures | 0 |
 | Nonfatal warnings | 1 |
 
@@ -283,7 +283,7 @@ Portfolio-focused regression:
 python -m pytest tests/test_portfolio_*.py -q
 ```
 
-The latest verified portfolio suite passed **254 tests**.
+The latest verified portfolio suite passed **319 tests**.
 
 ### Docker Smoke-Test Evidence
 

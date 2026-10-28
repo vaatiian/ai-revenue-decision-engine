@@ -284,7 +284,7 @@ def test_architecture_summary_uses_verified_counts():
 
     assert result[
         "automated_tests"
-    ] == 1840
+    ] == 1915
 
 
 def test_architecture_summary_batch_count():

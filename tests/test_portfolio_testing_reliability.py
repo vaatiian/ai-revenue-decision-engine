@@ -27,7 +27,7 @@ def test_real_testing_evidence_validates():
 def test_executed_regression_evidence_is_preserved():
     evidence = reliability_summary(summary())
 
-    assert evidence["executed_regression_cases"] == 1840
+    assert evidence["executed_regression_cases"] == 1915
     assert evidence["explicit_test_functions"] == EXPLICIT_TEST_FUNCTION_COUNT
     assert evidence["test_modules"] == TEST_MODULE_COUNT
     assert evidence["known_warnings"] == KNOWN_WARNING_COUNT
@@ -81,7 +81,7 @@ def test_invalid_regression_count_fails_closed():
         validate_testing_evidence(
             {
                 "verified_evidence": {
-                    "automated_tests_passing": "1840"
+                    "automated_tests_passing": "1915"
                 }
             }
         )
