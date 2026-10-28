@@ -43,6 +43,10 @@ from portfolio.decision_demo_page import (
     render_decision_demo,
 )
 
+from portfolio.governance_dashboard_page import (
+    render_governance_dashboard,
+)
+
 from portfolio.model_explorer_page import (
     render_model_explorer,
 )
@@ -143,7 +147,7 @@ def render_sidebar() -> str:
             "Interactive Decision Demo",
             "Decision Intelligence",
             "ML / Model Explorer",
-            "Model Governance",
+            "Governance Dashboard",
             "Production Evidence",
         ],
         label_visibility="collapsed",
@@ -1008,127 +1012,6 @@ def render_decision_intelligence(
     )
 
 
-def render_model_governance(
-    bundle,
-) -> None:
-    """
-    Governance-first model register.
-    """
-
-    registry = bundle[
-        "model_registry"
-    ]
-
-    render_section_heading(
-        st,
-        kicker="Model Governance",
-        title="Available does not mean unrestricted",
-        copy=(
-            "Every intelligence system keeps its governed research "
-            "decision visible. Conditional systems remain constrained "
-            "to their approved use."
-        ),
-    )
-
-    for system in registry[
-        "systems"
-    ]:
-
-        with st.expander(
-            system[
-                "display_name"
-            ],
-            expanded=False,
-        ):
-
-            left, right = st.columns(
-                2
-            )
-
-            with left:
-
-                st.markdown(
-                    "**Model**"
-                )
-
-                st.write(
-                    system.get(
-                        "model_name"
-                    )
-                    or
-                    "Deterministic architecture"
-                )
-
-                st.markdown(
-                    "**Model type**"
-                )
-
-                st.write(
-                    system.get(
-                        "model_type"
-                    )
-                )
-
-                st.markdown(
-                    "**Target**"
-                )
-
-                st.write(
-                    system.get(
-                        "target_name"
-                    )
-                )
-
-            with right:
-
-                st.markdown(
-                    "**Governance**"
-                )
-
-                st.write(
-                    system.get(
-                        "governance"
-                    )
-                )
-
-                st.markdown(
-                    "**Validation**"
-                )
-
-                st.write(
-                    system.get(
-                        "validation_method"
-                    )
-                    or
-                    "See governed manifest"
-                )
-
-                st.markdown(
-                    "**Prediction horizon**"
-                )
-
-                st.write(
-                    system.get(
-                        "prediction_horizon"
-                    )
-                )
-
-            metrics = system.get(
-                "metrics"
-            )
-
-            if metrics:
-
-                st.markdown(
-                    "**Governed evaluation metrics**"
-                )
-
-                st.json(
-                    metrics,
-                    expanded=False,
-                )
-
-
 def render_production_evidence(
     bundle,
 ) -> None:
@@ -1266,10 +1149,11 @@ def main() -> None:
             bundle,
         )
 
-    elif page == "Model Governance":
+    elif page == "Governance Dashboard":
 
-        render_model_governance(
-            bundle
+        render_governance_dashboard(
+            st,
+            bundle,
         )
 
     elif page == "Production Evidence":
