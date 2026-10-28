@@ -1,18 +1,19 @@
+
 [theme]
 base = "dark"
-primaryColor = "#52D6FF"
-backgroundColor = "#07100F"
-secondaryBackgroundColor = "#101D1B"
-textColor = "#F4F2EC"
+primaryColor = "#13B8A6"
+backgroundColor = "#101B27"
+secondaryBackgroundColor = "#192C39"
+textColor = "#F5F8FA"
 font = "sans-serif"
 showWidgetBorder = true
 baseRadius = "none"
 buttonRadius = "none"
 
 [theme.sidebar]
-backgroundColor = "#091311"
-secondaryBackgroundColor = "#101D1B"
-textColor = "#F4F2EC"
+backgroundColor = "#101D2A"
+secondaryBackgroundColor = "#192C39"
+textColor = "#F5F8FA"
 
 [browser]
 gatherUsageStats = false

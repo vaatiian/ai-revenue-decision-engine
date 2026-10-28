@@ -91,33 +91,69 @@ def render_hero(
     st_module,
 ) -> None:
     """
-    Render the portfolio hero.
+    Render the executive-first retail intelligence hero.
 
-    HTML is deliberately constructed without leading indentation because
-    Markdown treats four leading spaces as a code block.
+    Presentation-only component.
+    Does not make or modify governed customer decisions.
     """
 
     hero_html = (
         '<div class="portfolio-hero">'
-        '<div class="portfolio-eyebrow">'
-        "End-to-End Machine Learning · Decision Intelligence"
-        "</div>"
-        "<h1>"
-        "AI Revenue<br>"
-        "Decision Engine"
-        "</h1>"
+        '<div class="portfolio-hero-topline">'
+        '<span class="portfolio-eyebrow">'
+        'AI REVENUE DECISION ENGINE / EXECUTIVE OVERVIEW'
+        '</span>'
+        '<span class="portfolio-hero-context">'
+        'RETAIL INTELLIGENCE'
+        '</span>'
+        '</div>'
+
+        '<h1>'
+        'From retail transactions to '
+        '<span class="portfolio-hero-highlight">'
+        'governed revenue decisions.'
+        '</span>'
+        '</h1>'
+
         '<div class="portfolio-hero-copy">'
-        '<span class="portfolio-hero-tagline">'
-        "From transactions to governed revenue decisions."
-        "</span>"
-        "<br><br>"
-        "A production-oriented retail intelligence system that "
-        "connects predictive modelling, recommendations, "
-        "demand forecasting, governed decision policy, "
-        "CRM delivery, monitoring, automated testing, "
-        "and scheduled Docker execution."
-        "</div>"
-        "</div>"
+        'A production-oriented intelligence platform connecting '
+        'customer behaviour, predictive models, and deterministic '
+        'commercial action.'
+        '</div>'
+
+        '<div class="portfolio-hero-flow">'
+        '<div class="portfolio-hero-step">'
+        '<span class="portfolio-hero-step-number">01</span>'
+        '<span>TRANSACTIONS</span>'
+        '</div>'
+
+        '<span class="portfolio-hero-flow-arrow">&rarr;</span>'
+
+        '<div class="portfolio-hero-step">'
+        '<span class="portfolio-hero-step-number">02</span>'
+        '<span>INTELLIGENCE</span>'
+        '</div>'
+
+        '<span class="portfolio-hero-flow-arrow">&rarr;</span>'
+
+        '<div class="portfolio-hero-step">'
+        '<span class="portfolio-hero-step-number">03</span>'
+        '<span>DECISIONS</span>'
+        '</div>'
+
+        '<span class="portfolio-hero-flow-arrow">&rarr;</span>'
+
+        '<div class="portfolio-hero-step">'
+        '<span class="portfolio-hero-step-number">04</span>'
+        '<span>GOVERNANCE</span>'
+        '</div>'
+        '</div>'
+
+        '<div class="portfolio-hero-disclosure">'
+        'Governed historical execution evidence · '
+        'No claim of realised commercial uplift'
+        '</div>'
+        '</div>'
     )
 
     st_module.markdown(
@@ -164,7 +200,19 @@ def render_proof_cards(
     evidence: dict[str, Any],
 ) -> None:
     """
-    Render verified execution proof points.
+    Render a two-tier executive evidence dashboard.
+
+    Primary:
+    - Customer decisions generated
+    - Production scoring systems available
+    - Automated regression tests passed
+
+    Secondary:
+    - Production intelligence systems
+    - Repeat-purchase scores
+    - Governed demand horizons
+
+    All values come from verified portfolio evidence.
     """
 
     horizons = evidence.get(
@@ -173,80 +221,108 @@ def render_proof_cards(
     )
 
     horizon_label = (
-        "/".join(
-            str(value)
-            for value in horizons
-        )
+        " / ".join(str(value) for value in horizons)
         if horizons
-        else
-        "—"
+        else "—"
     )
 
-    cards = [
+    scoring_available = evidence.get(
+        "production_scoring_systems_available",
+        0,
+    )
+
+    scoring_total = evidence.get(
+        "production_scoring_systems_total",
+        0,
+    )
+
+    primary_cards = [
         (
-            evidence.get(
-                "production_intelligence_systems",
-                "—",
-            ),
-            "Production intelligence systems",
-            "Governed model and deterministic intelligence layer",
+            f"{evidence.get('customer_decisions_generated', 0):,}",
+            "Customer decisions generated",
+            "Verified historical Docker smoke execution",
+            "commercial",
+        ),
+        (
+            f"{scoring_available}/{scoring_total}",
+            "Scoring systems available",
+            "Verified production runtime health",
+            "intelligence",
         ),
         (
             f"{evidence.get('automated_tests_passing', 0):,}",
             "Automated tests passing",
-            "Current regression suite",
+            "Current verified regression suite",
+            "reliability",
         ),
+    ]
+
+    secondary_cards = [
         (
-            f"{evidence.get('customer_decisions_generated', 0):,}",
-            "Customer decisions generated",
-            "Verified Docker smoke execution",
+            f"{evidence.get('production_intelligence_systems', 0):,}",
+            "Production intelligence systems",
+            "Governed predictive and deterministic intelligence",
         ),
         (
             f"{evidence.get('repeat_purchase_scores_generated', 0):,}",
             "Repeat-purchase scores",
-            "Verified governed scoring execution",
+            "Verified historical scoring execution",
         ),
         (
             horizon_label,
             "Demand horizons · weeks",
-            "Governed weekly forecasts",
-        ),
-        (
-            (
-                f"{evidence.get('production_scoring_systems_available', 0)}"
-                "/"
-                f"{evidence.get('production_scoring_systems_total', 0)}"
-            ),
-            "Scoring systems available",
-            "Verified runtime health",
+            "Governed weekly revenue forecasting",
         ),
     ]
 
     html = (
-        '<div class="portfolio-proof-grid">'
+        '<div class="portfolio-evidence-heading">'
+        '<span class="portfolio-section-kicker">'
+        'VERIFIED SYSTEM EVIDENCE'
+        '</span>'
+        '<span class="portfolio-evidence-context">'
+        'HISTORICAL EXECUTION / ENGINEERING VERIFICATION'
+        '</span>'
+        '</div>'
+        '<div class="portfolio-proof-grid portfolio-proof-primary">'
     )
 
-    for (
-        value,
-        label,
-        caption,
-    ) in cards:
+    for value, label, caption, category in primary_cards:
+        html += (
+            f'<div class="portfolio-proof-card proof-{category}">'
+            '<div class="portfolio-proof-value">'
+            f"{_safe(value)}"
+            '</div>'
+            '<div class="portfolio-proof-label">'
+            f"{_safe(label)}"
+            '</div>'
+            '<div class="portfolio-proof-caption">'
+            f"{_safe(caption)}"
+            '</div>'
+            '</div>'
+        )
 
+    html += (
+        '</div>'
+        '<div class="portfolio-proof-grid portfolio-proof-secondary">'
+    )
+
+    for value, label, caption in secondary_cards:
         html += (
             '<div class="portfolio-proof-card">'
             '<div class="portfolio-proof-value">'
             f"{_safe(value)}"
-            "</div>"
+            '</div>'
             '<div class="portfolio-proof-label">'
             f"{_safe(label)}"
-            "</div>"
+            '</div>'
             '<div class="portfolio-proof-caption">'
             f"{_safe(caption)}"
-            "</div>"
-            "</div>"
+            '</div>'
+            '</div>'
         )
 
-    html += "</div>"
+    html += '</div>'
 
     st_module.markdown(
         html,

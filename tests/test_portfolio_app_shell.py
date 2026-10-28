@@ -160,23 +160,23 @@ def test_portfolio_bundle_loads_all_public_layers():
 def test_visual_system_contains_locked_brand_tokens():
     assert COLORS[
         "background"
-    ] == "#07100F"
+    ] == "#101B27"
 
     assert COLORS[
         "accent"
-    ] == "#52D6FF"
+    ] == "#13B8A6"
 
     assert COLORS[
         "go"
-    ] == "#4DE3A3"
+    ] == "#46D5A0"
 
     assert COLORS[
         "conditional"
-    ] == "#FFBD66"
+    ] == "#E6B85C"
 
     assert COLORS[
         "risk"
-    ] == "#FF7070"
+    ] == "#E66E78"
 
 
 def test_visual_system_contains_core_components():
