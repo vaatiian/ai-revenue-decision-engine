@@ -153,3 +153,16 @@ def test_proof_cards_do_not_invent_missing_evidence():
 
     assert "0/0" in body
     assert "—" in body
+
+def test_global_styles_use_streamlit_html():
+    """Ensure the Revenue OS stylesheet uses the HTML renderer."""
+    from unittest.mock import Mock
+
+    from portfolio.theme import GLOBAL_CSS, apply_global_styles
+
+    streamlit_mock = Mock()
+
+    apply_global_styles(streamlit_mock)
+
+    streamlit_mock.html.assert_called_once_with(GLOBAL_CSS)
+    streamlit_mock.markdown.assert_not_called()

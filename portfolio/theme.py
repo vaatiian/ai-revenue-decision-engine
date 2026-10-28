@@ -869,7 +869,4 @@ label:has(input:checked) p {
 def apply_global_styles(st_module) -> None:
     """Apply the shared portfolio design system."""
 
-    st_module.markdown(
-        GLOBAL_CSS,
-        unsafe_allow_html=True,
-    )
+    st_module.html(GLOBAL_CSS)
