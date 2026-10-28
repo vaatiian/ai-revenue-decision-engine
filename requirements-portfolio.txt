@@ -1,0 +1,12 @@
+
+# Revenue OS — public Streamlit portfolio
+# Python 3.11
+#
+# Public demonstration only.
+# No production model binaries or research tooling required.
+
+streamlit==1.66.1
+altair>=6.0,<7.0
+pandas>=2.3,<3.1
+pyarrow>=19,<25
+numpy>=2.0,<3.0
