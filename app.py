@@ -1,3 +1,4 @@
+
 """
 AI Revenue Decision Engine — Portfolio Application.
 
@@ -53,6 +54,10 @@ from portfolio.model_explorer_page import (
 
 from portfolio.production_architecture_page import (
     render_production_architecture,
+)
+
+from portfolio.testing_reliability_page import (
+    render_testing_reliability,
 )
 
 from portfolio.theme import (
@@ -153,6 +158,7 @@ def render_sidebar() -> str:
             "ML / Model Explorer",
             "Governance Dashboard",
             "Production Architecture",
+            "Testing & Reliability",
             "Production Evidence",
         ],
         label_visibility="collapsed",
@@ -1164,6 +1170,13 @@ def main() -> None:
     elif page == "Production Architecture":
 
         render_production_architecture(
+            st,
+            bundle,
+        )
+
+    elif page == "Testing & Reliability":
+
+        render_testing_reliability(
             st,
             bundle,
         )
