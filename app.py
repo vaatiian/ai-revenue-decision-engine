@@ -51,6 +51,10 @@ from portfolio.model_explorer_page import (
     render_model_explorer,
 )
 
+from portfolio.production_architecture_page import (
+    render_production_architecture,
+)
+
 from portfolio.theme import (
     apply_global_styles,
 )
@@ -148,6 +152,7 @@ def render_sidebar() -> str:
             "Decision Intelligence",
             "ML / Model Explorer",
             "Governance Dashboard",
+            "Production Architecture",
             "Production Evidence",
         ],
         label_visibility="collapsed",
@@ -1152,6 +1157,13 @@ def main() -> None:
     elif page == "Governance Dashboard":
 
         render_governance_dashboard(
+            st,
+            bundle,
+        )
+
+    elif page == "Production Architecture":
+
+        render_production_architecture(
             st,
             bundle,
         )
