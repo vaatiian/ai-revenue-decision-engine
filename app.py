@@ -4,9 +4,8 @@ AI Revenue Decision Engine — Portfolio Application.
 The application consumes only curated, anonymised, governed portfolio
 artifacts.
 
-The Revenue Command Centre provides an executive operating view over
-real governed customer-decision outputs without changing production
-decision logic.
+Pages progressively expose the commercial, modelling, governance,
+and production-engineering layers of the system.
 """
 
 from __future__ import annotations
@@ -30,6 +29,10 @@ from portfolio.components import (
     render_proof_cards,
     render_section_heading,
     render_system_card,
+)
+
+from portfolio.customer_explorer_page import (
+    render_customer_decision_explorer,
 )
 
 from portfolio.data_loader import (
@@ -128,6 +131,7 @@ def render_sidebar() -> str:
         options=[
             "Overview",
             "Revenue Command Centre",
+            "Customer Decision Explorer",
             "Decision Intelligence",
             "Model Governance",
             "Production Evidence",
@@ -298,11 +302,9 @@ def render_overview(
     with left:
 
         st.markdown(
-            (
-                '<div class="portfolio-panel-title">'
-                "Customer state"
-                "</div>"
-            ),
+            '<div class="portfolio-panel-title">'
+            "Customer state"
+            "</div>",
             unsafe_allow_html=True,
         )
 
@@ -316,11 +318,9 @@ def render_overview(
     with right:
 
         st.markdown(
-            (
-                '<div class="portfolio-panel-title">'
-                "Primary governed action"
-                "</div>"
-            ),
+            '<div class="portfolio-panel-title">'
+            "Primary governed action"
+            "</div>",
             unsafe_allow_html=True,
         )
 
@@ -870,42 +870,6 @@ def render_revenue_command_centre(
             hide_index=True,
             height=520,
             column_config={
-                "Customer":
-                    st.column_config.TextColumn(
-                        "Customer",
-                        width="medium",
-                    ),
-
-                "State":
-                    st.column_config.TextColumn(
-                        "State",
-                        width="small",
-                    ),
-
-                "Action":
-                    st.column_config.TextColumn(
-                        "Action",
-                        width="small",
-                    ),
-
-                "Priority":
-                    st.column_config.TextColumn(
-                        "Priority",
-                        width="small",
-                    ),
-
-                "Contact":
-                    st.column_config.TextColumn(
-                        "Contact",
-                        width="medium",
-                    ),
-
-                "Experiment":
-                    st.column_config.TextColumn(
-                        "Experiment",
-                        width="medium",
-                    ),
-
                 "Priority Percentile":
                     st.column_config.NumberColumn(
                         "Priority %",
@@ -935,8 +899,8 @@ def render_revenue_command_centre(
         st.caption(
             (
                 "Detailed decision reasoning, model evidence, and "
-                "customer-level recommendation context move into the "
-                "Customer Decision Explorer in Phase 13G."
+                "customer-level recommendation context are available "
+                "in the Customer Decision Explorer."
             )
         )
 
@@ -946,8 +910,6 @@ def render_decision_intelligence(
 ) -> None:
     """
     Decision-system architecture shell.
-
-    Full customer dossier arrives in Phase 13G.
     """
 
     decisions = bundle[
@@ -1031,8 +993,8 @@ def render_decision_intelligence(
     )
 
     st.info(
-        "The full single-customer decision dossier is implemented "
-        "in Phase 13G."
+        "Interactive policy simulation is introduced separately "
+        "in Phase 13H."
     )
 
 
@@ -1070,10 +1032,7 @@ def render_model_governance(
         ):
 
             left, right = st.columns(
-                [
-                    1,
-                    1,
-                ]
+                2
             )
 
             with left:
@@ -1269,6 +1228,13 @@ def main() -> None:
 
         render_revenue_command_centre(
             bundle
+        )
+
+    elif page == "Customer Decision Explorer":
+
+        render_customer_decision_explorer(
+            st,
+            bundle,
         )
 
     elif page == "Decision Intelligence":
