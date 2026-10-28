@@ -842,12 +842,17 @@ def main() -> None:
         FileNotFoundError,
         RuntimeError,
         ValueError,
-    ) as exc:
+    ):
         st.error(
-            "The curated portfolio data layer failed validation."
+            "The portfolio demonstration is temporarily unavailable "
+            "because its curated data could not be validated."
         )
 
-        st.code(str(exc))
+        st.info(
+            "No customer interventions have been initiated. "
+            "Please contact the repository maintainer if this persists."
+        )
+
         st.stop()
 
     page = render_sidebar()

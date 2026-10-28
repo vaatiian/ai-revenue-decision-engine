@@ -249,3 +249,17 @@ def test_app_does_not_load_model_binaries():
     assert ".joblib" not in app_source
 
     assert "joblib.load" not in app_source
+
+def test_public_startup_errors_do_not_expose_exception_details():
+    app_source = (
+        PROJECT_ROOT / "app.py"
+    ).read_text(encoding="utf-8")
+
+    assert "st.code(str(exc))" not in app_source
+
+    assert (
+        "The portfolio demonstration is temporarily unavailable"
+        in app_source
+    )
+
+    assert "st.stop()" in app_source
