@@ -1,0 +1,49 @@
+{
+  "claims_note": "Portfolio counts represent verified system and Docker smoke-test evidence, not realised business impact.",
+  "decision_snapshot": {
+    "customer_state_counts": {
+      "Active": 911,
+      "At Risk": 1006,
+      "Dormant": 857,
+      "Long Dormant": 2446
+    },
+    "decision_date": "2011-08-31",
+    "primary_action_counts": {
+      "Monitor": 429,
+      "Protect": 493,
+      "Reactivate": 857,
+      "Retain": 995,
+      "Unscored — Long Dormant": 2446
+    },
+    "priority_tier_counts": {
+      "Not Prioritised": 2875,
+      "Priority 1": 235,
+      "Priority 2": 466,
+      "Priority 3": 701,
+      "Priority 4": 943
+    }
+  },
+  "demand_snapshot": {
+    "forecast_origin_week": "2011-11-21",
+    "forecast_rows": 3,
+    "horizons_weeks": [
+      1,
+      2,
+      4
+    ]
+  },
+  "schema_version": "1.0.0",
+  "verified_evidence": {
+    "automated_tests_passing": 1596,
+    "customer_decisions_generated": 5220,
+    "governed_demand_horizons": [
+      1,
+      2,
+      4
+    ],
+    "production_intelligence_systems": 6,
+    "production_scoring_systems_available": 6,
+    "production_scoring_systems_total": 6,
+    "repeat_purchase_scores_generated": 4269
+  }
+}

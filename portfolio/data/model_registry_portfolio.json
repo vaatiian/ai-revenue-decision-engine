@@ -1,0 +1,182 @@
+{
+  "schema_version": "1.0.0",
+  "system_count": 6,
+  "systems": [
+    {
+      "algorithm": "RandomForestClassifier",
+      "approved_use": null,
+      "display_name": "Reactivation Propensity",
+      "feature_count": 29,
+      "governance": "GO",
+      "limitations": [],
+      "metrics": {},
+      "model_name": "Full Random Forest",
+      "model_type": "classification",
+      "model_version": "1.0.0",
+      "prediction_horizon": 90,
+      "system_id": "reactivation",
+      "target_name": "reactivation_within_next_90_days",
+      "validation_method": "chronological out-of-time"
+    },
+    {
+      "algorithm": "GradientBoostingClassifier",
+      "approved_use": null,
+      "display_name": "Revenue Leakage Risk",
+      "feature_count": 45,
+      "governance": "GO",
+      "limitations": [],
+      "metrics": {},
+      "model_name": "Full Gradient Boosting",
+      "model_type": "classification",
+      "model_version": "1.0.0",
+      "prediction_horizon": 90,
+      "system_id": "revenue_leakage",
+      "target_name": "revenue_leakage_event",
+      "validation_method": "purged chronological validation"
+    },
+    {
+      "algorithm": "RandomForestClassifier",
+      "approved_use": [
+        "customer ranking",
+        "value segmentation",
+        "CRM prioritisation",
+        "high-value customer identification",
+        "customer-service prioritisation",
+        "controlled commercial decision support"
+      ],
+      "architecture": {
+        "formula": "P(Future Active) × 0.50 × h180_revenue",
+        "stage_a": "Full Random Forest",
+        "stage_b": "180-Day Historical Run Rate"
+      },
+      "display_name": "Future Customer Value",
+      "feature_count": 50,
+      "governance": "CONDITIONAL GO",
+      "limitations": [
+        "absolute monetary calibration drift under changing economic regimes"
+      ],
+      "metrics": {
+        "complete_capture_at_10": 0.57375,
+        "complete_capture_at_20": 0.68687,
+        "complete_capture_at_30": 0.768946,
+        "complete_predicted_to_actual_revenue": 0.593481,
+        "complete_spearman": 0.550464,
+        "stage_a_pr_auc": 0.822148,
+        "stage_a_roc_auc": 0.749591
+      },
+      "model_name": "Full Random Forest",
+      "model_type": "classification",
+      "model_version": "1.0.0",
+      "prediction_horizon": 90,
+      "system_id": "future_customer_value",
+      "target_name": "future_active",
+      "validation_method": "purged chronological validation"
+    },
+    {
+      "algorithm": "LogisticRegression",
+      "approved_use": "Customer prioritisation and controlled retention experimentation",
+      "display_name": "Repeat Purchase Propensity",
+      "feature_count": 18,
+      "governance": "CONDITIONAL GO",
+      "limitations": [
+        "Causal treatment decisions",
+        "Guaranteed individual probabilities",
+        "Permanent churn inference"
+      ],
+      "metrics": {
+        "brier_score": 0.248,
+        "calibration_error_percentage_points": 4.71,
+        "lift_at_10": 1.03,
+        "lift_at_20": 1.11,
+        "pr_auc": 0.503,
+        "roc_auc": 0.56
+      },
+      "model_name": "Drop-First Interpretable Logistic Regression",
+      "model_type": "binary_classifier",
+      "model_version": "1.0.0",
+      "prediction_horizon": 90,
+      "system_id": "repeat_purchase",
+      "target_name": "repeat_within_90d",
+      "validation_method": null
+    },
+    {
+      "algorithm": null,
+      "approved_use": {
+        "discovery_channel": "product discovery, cross-sell experimentation and merchandising support",
+        "repeat_channel": "operational next-product replenishment recommendation"
+      },
+      "architecture": {
+        "discovery_channel": "Item-to-Item Affinity",
+        "hybrid_role": "optional presentation layer only",
+        "optional_hybrid": "70% Repeat / 30% Discovery",
+        "repeat_channel": "Customer Repeat Frequency"
+      },
+      "display_name": "Next Best Product",
+      "feature_count": null,
+      "governance": {
+        "discovery_channel": "CONDITIONAL GO",
+        "repeat_channel": "GO"
+      },
+      "limitations": [
+        "guaranteed next-purchase prediction"
+      ],
+      "metrics": {
+        "discovery_hit_rate_at_10": 0.21601,
+        "discovery_hit_rate_at_20": 0.299238,
+        "hybrid_hit_rate_at_20": 0.774634,
+        "repeat_eligible_hit_rate_at_20": 0.870896,
+        "repeat_hit_rate_at_10": 0.705912,
+        "repeat_hit_rate_at_20": 0.792319
+      },
+      "model_name": "Customer Repeat Frequency + Item-to-Item Affinity",
+      "model_type": "ranking",
+      "model_version": "1.0.0",
+      "prediction_horizon": 90,
+      "system_id": "recommendation",
+      "target_name": "next_qualifying_order_products",
+      "validation_method": "Temporal holdout with frozen post-holdout governance"
+    },
+    {
+      "algorithm": null,
+      "approved_use": "GO for operational demand planning",
+      "architecture": {
+        "formula": "0.90 * seasonal_52_week_analogue + 0.10 * trailing_4_week_average_at_origin",
+        "recent_weight": 0.1,
+        "recent_window_weeks": 4,
+        "seasonal_lag_weeks": 52,
+        "seasonal_weight": 0.9
+      },
+      "display_name": "Weekly Demand Forecast",
+      "feature_count": null,
+      "governance": "GO",
+      "limitations": [
+        "Historical planning ranges; not independently calibrated guaranteed future prediction intervals"
+      ],
+      "metrics": {
+        "approx_four_week_aggregate_forecast_actual": 0.977,
+        "approx_four_week_aggregate_wape": 0.0916,
+        "approx_horizon_forecast_actual": {
+          "1": 0.974,
+          "2": 0.974,
+          "4": 0.975
+        },
+        "approx_horizon_wape": {
+          "1": 0.1652,
+          "2": 0.1668,
+          "4": 0.1684
+        }
+      },
+      "model_name": "Seasonal / Recent Weekly Revenue Blend",
+      "model_type": "deterministic_forecast",
+      "model_version": "1.0.0",
+      "prediction_horizon": [
+        1,
+        2,
+        4
+      ],
+      "system_id": "demand_forecast",
+      "target_name": "weekly_positive_merchandise_revenue",
+      "validation_method": "Temporal backtesting / multi-horizon historical evaluation"
+    }
+  ]
+}
