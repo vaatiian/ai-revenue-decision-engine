@@ -43,6 +43,10 @@ from portfolio.decision_demo_page import (
     render_decision_demo,
 )
 
+from portfolio.model_explorer_page import (
+    render_model_explorer,
+)
+
 from portfolio.theme import (
     apply_global_styles,
 )
@@ -138,6 +142,7 @@ def render_sidebar() -> str:
             "Customer Decision Explorer",
             "Interactive Decision Demo",
             "Decision Intelligence",
+            "ML / Model Explorer",
             "Model Governance",
             "Production Evidence",
         ],
@@ -1252,6 +1257,13 @@ def main() -> None:
 
         render_decision_intelligence(
             bundle
+        )
+
+    elif page == "ML / Model Explorer":
+
+        render_model_explorer(
+            st,
+            bundle,
         )
 
     elif page == "Model Governance":
