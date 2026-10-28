@@ -39,6 +39,10 @@ from portfolio.data_loader import (
     load_portfolio_bundle,
 )
 
+from portfolio.decision_demo_page import (
+    render_decision_demo,
+)
+
 from portfolio.theme import (
     apply_global_styles,
 )
@@ -132,6 +136,7 @@ def render_sidebar() -> str:
             "Overview",
             "Revenue Command Centre",
             "Customer Decision Explorer",
+            "Interactive Decision Demo",
             "Decision Intelligence",
             "Model Governance",
             "Production Evidence",
@@ -993,8 +998,8 @@ def render_decision_intelligence(
     )
 
     st.info(
-        "Interactive policy simulation is introduced separately "
-        "in Phase 13H."
+        "Interactive production-policy simulation is available in "
+        "the Interactive Decision Demo."
     )
 
 
@@ -1235,6 +1240,12 @@ def main() -> None:
         render_customer_decision_explorer(
             st,
             bundle,
+        )
+
+    elif page == "Interactive Decision Demo":
+
+        render_decision_demo(
+            st
         )
 
     elif page == "Decision Intelligence":

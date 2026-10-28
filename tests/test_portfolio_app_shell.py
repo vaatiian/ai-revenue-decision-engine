@@ -112,7 +112,7 @@ def test_portfolio_summary_contains_verified_evidence():
 
     assert evidence[
         "automated_tests_passing"
-    ] == 1649
+    ] == 1679
 
     assert evidence[
         "customer_decisions_generated"
