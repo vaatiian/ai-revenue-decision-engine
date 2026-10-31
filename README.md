@@ -1,100 +1,101 @@
+# Revenue OS — AI Revenue Decision Engine
 
-# AI Revenue Decision Engine
+**From retail transactions to intelligent, governed revenue decisions.**
 
-### From transactions to governed revenue decisions.
+Revenue OS is a production-oriented machine learning and decision-intelligence system that turns historical retail transaction data into customer-risk signals, predictive insights, prioritised commercial decisions, and governed operational outputs.
 
-A production-oriented machine learning and decision intelligence system that transforms historical retail transactions into explainable customer actions, revenue-risk signals, recommendations, and demand forecasts.
+It connects **six production intelligence systems** to deterministic decision policies, CRM delivery controls, experiment governance, monitoring, and Docker-based batch workflows. The public Streamlit application makes the architecture and verified historical evidence explorable without exposing raw transactions or operational state.
 
-The project connects predictive models to deterministic business policies, production scoring contracts, CRM delivery controls, experimentation, monitoring, automated tests, and Docker-based batch execution.
-
-**This is more than a collection of machine learning notebooks. It demonstrates the engineering required to turn predictions into governed operational decisions.**
-
-### Revenue OS — Executive Command Centre
+**[Explore the live dashboard](https://revenue-os-ai.streamlit.app/)** · **[View the v1.0.0 tag](https://github.com/vaatiian/ai-revenue-decision-engine/releases/tag/v1.0.0)** · **[Browse source code](https://github.com/vaatiian/ai-revenue-decision-engine)**
 
 ![Revenue OS Executive Overview](docs/screenshots/01-executive-overview.png)
 
-*Premium executive interface showing the governed journey from retail transactions to decisions, with verified historical execution and engineering evidence.*
+*Revenue OS Executive Overview: transactions → intelligence → decisions → governance.*
+
+> **Evidence boundary:** This is a publicly deployed, production-oriented portfolio and historically verified batch system—not evidence of live customer interventions, autonomous campaign execution, or realised incremental revenue.
 
 ## At a Glance
 
-| Verified project evidence | Result |
+| Verified evidence | Result |
 |---|---:|
 | Production intelligence systems | 6 |
 | Production scoring systems available | 6 / 6 |
-| Customer decisions generated in Docker smoke execution | 5,220 |
-| Repeat-purchase scores generated in Docker smoke execution | 4,269 |
+| Historical customer decisions generated in Docker smoke execution | 5,220 |
+| Historical repeat-purchase scores generated | 4,269 |
 | Governed demand forecast horizons | 1, 2 and 4 weeks |
-| Automated regression tests passing | 1,915 |
-| Test modules | 91 |
-| Explicit test functions | 1,644 |
-| Production batch jobs | 3 |
+| Full automated regression | **1,915 passed** |
+| Portfolio-specific regression | **319 passed** |
+| Production batch workloads | 3 |
+| Interactive application pages | 11 |
 | Interactive architecture views | 3 |
+| Portfolio release | **v1.0.0 — published** |
 
-These figures describe verified engineering capability and historical execution evidence, **not live customers served or realised revenue uplift**.
+### Find what you need
 
-**Project status:** Production-oriented implementation with controlled deployment governance. The flagship portfolio `v1.0.0` release is in preparation. The system is not approved for unrestricted autonomous customer interventions.
+| If you want to... | Start here |
+|---|---|
+| Understand the business problem | [1. The Business Problem](#1-the-business-problem) |
+| Explore models and commercial decisions | [2. The Solution](#2-the-solution) |
+| Review the data-to-decision architecture | [3. System Architecture](#3-system-architecture) |
+| See application screenshots | [4. Interactive Streamlit Portfolio](#4-interactive-streamlit-portfolio) |
+| Audit testing and operational evidence | [5. Verified Engineering Evidence](#5-verified-engineering-evidence) |
+| Examine research methods and metrics | [6. Research and Model Validation](#6-research-and-model-validation) |
+| Review safeguards and limitations | [7. Governance and Safety Controls](#7-governance-and-safety-controls) |
+| Run the app locally | [8. Local Setup](#8-local-setup) |
 
 ---
 
 ## 1. The Business Problem
 
-Retail businesses generate valuable transaction histories but often struggle to translate that information into coordinated commercial decisions.
+Retailers accumulate transaction histories but often struggle to turn them into coordinated customer actions. Traditional reporting describes **what happened**; predictive models estimate **what may happen**. Neither, on its own, determines a governed response.
 
-Traditional reporting explains what happened. Individual predictive models estimate what might happen next. Neither automatically determines what a business should do.
-
-The AI Revenue Decision Engine addresses five questions:
+Revenue OS addresses five operational questions:
 
 1. Which customers require attention?
 2. What action should be considered?
-3. How urgent is that action?
-4. What contact or experimentation policy applies?
-5. Is the underlying model evidence valid for this decision?
+3. How urgently should that action be prioritised?
+4. What contact and experimentation rules apply?
+5. Is the supporting model evidence valid and eligible for the decision?
 
-The result is a governed customer decision framework that helps connect customer intelligence to commercial operations.
+**The objective is not more predictions; it is a traceable path from predictive signals to actionable, policy-constrained decisions.**
 
 ## 2. The Solution
 
-The system combines six production intelligence capabilities with a deterministic customer-level decision engine.
-
-Four intelligence systems can contribute to customer decisions when their eligibility and governance conditions are satisfied. Two operate as separate forecasting or customer-lifecycle workflows.
+Revenue OS combines six production intelligence systems with a deterministic customer-level Decision Engine. Four systems may contribute to the decision engine under their governance and eligibility contracts; two run as independent lifecycle and forecasting workflows.
 
 ### Production Intelligence Systems
 
 | System | Business question | Governance | Operational role |
 |---|---|---|---|
-| Reactivation Propensity | Which inactive customers are likely to return? | GO | Decision Engine input |
-| Revenue Leakage Risk | Which customers face potential future revenue decline? | GO | Decision Engine input |
-| Future Customer Value | What positive merchandise revenue may a customer generate over the next 90 days? | CONDITIONAL GO | Decision Engine input |
-| Next Best Product | Which product is relevant to the next eligible purchase? | GO for repeat; CONDITIONAL GO for discovery | Optional Decision Engine input |
-| Repeat Purchase Propensity | Will a first-time customer purchase again within the governed horizon? | CONDITIONAL GO | Standalone scoring workflow |
-| Weekly Demand Forecasting | What merchandise revenue is expected over the next 1, 2 and 4 weeks? | GO | Standalone forecasting workflow |
+| **Reactivation Propensity** | Which inactive customers may return? | GO | Decision Engine input |
+| **Revenue Leakage Risk** | Which customers face a risk of declining revenue? | GO | Decision Engine input |
+| **Future Customer Value** | What positive merchandise revenue might be generated over the next 90 days? | CONDITIONAL GO | Decision Engine input |
+| **Next Best Product** | What product is relevant to the next eligible purchase? | GO for repeat; CONDITIONAL GO for discovery | Optional Decision Engine input |
+| **Repeat Purchase Propensity** | Will a first-time customer purchase again within the governed horizon? | CONDITIONAL GO | Standalone scoring workflow |
+| **Weekly Demand Forecasting** | What merchandise revenue is forecast over 1, 2 and 4 weeks? | GO | Standalone forecasting workflow |
 
-**Important:** Model availability does not imply unrestricted operational approval.
+**Availability is not permission.** A scoring interface being operational does not authorise unrestricted intervention.
 
 ### Customer Decision Actions
 
-The Decision Engine combines eligible signals, customer lifecycle state, business rules, and priority policies to assign one governed primary outcome.
+For eligible customer signals, the Decision Engine applies lifecycle context, deterministic business rules and prioritisation policies to produce one primary governed outcome.
 
-| Action | Operational purpose |
+| Outcome | Intended operational purpose |
 |---|---|
-| Protect | Prioritise commercially important relationships exposed to revenue decline |
-| Retain | Address weakening customer engagement |
-| Reactivate | Support controlled win-back activity for eligible dormant customers |
-| Grow | Identify eligible product expansion opportunities |
-| Monitor | Preserve visibility without requiring an immediate model-led intervention |
-| Non-actionable / Unscored | Explicitly withhold unsupported model-led actions |
+| **Protect** | Prioritise commercially important relationships exposed to revenue decline |
+| **Retain** | Address weakening customer engagement |
+| **Reactivate** | Consider controlled win-back activity for eligible dormant customers |
+| **Grow** | Identify eligible product expansion opportunities |
+| **Monitor** | Maintain visibility without immediate model-led outreach |
+| **Non-actionable / Unscored** | Withhold unsupported model-led actions explicitly |
 
-Action assignments are not independent model predictions. They result from governed decision logic.
+These outcomes are **policy-derived decisions**, not additional independent predictions.
 
 ### Priority and Contact Policy
 
-Actionable decisions are ranked within their relevant action types.
+Actionable customers are ranked within relevant action categories. Priority bands **P1–P4** can be mapped to contact-intensity categories such as High Touch, Campaign, Automated / Low Cost, and Hold / Control.
 
-Priority bands P1–P4 can map to contact-intensity categories such as High Touch, Campaign, Automated / Low Cost, and Hold / Control.
-
-Non-actionable customers receive **No Model-Led Contact**.
-
-Priority scores are operational ranking indices, not calibrated causal probabilities or guaranteed economic returns.
+Non-actionable customers receive **No Model-Led Contact**. Priority indices are operational ranking measures, not calibrated causal probabilities or guaranteed returns.
 
 ---
 
@@ -106,7 +107,7 @@ Priority scores are operational ranking indices, not calibrated causal probabili
 Historical Retail Transactions
             |
             v
-   Canonical Data Contract
+    Canonical Data Contract
             |
             v
    Production Feature Builders
@@ -115,130 +116,83 @@ Historical Retail Transactions
     Governed Model Scorers
             |
             v
-  Score Registry / Snapshots
+    Score Registry / Snapshots
             |
             v
-   Signal Eligibility & Alignment
+    Signal Eligibility & Alignment
             |
             v
- Deterministic Decision Engine
+    Deterministic Decision Engine
             |
             v
-  Priority & Contact Policy
+    Priority & Contact Policy
             |
             v
-  Governed Customer Decisions
+    Governed Customer Decisions
 ```
 
-Four eligible intelligence channels contribute to the customer-level decision architecture:
-
-- Reactivation Propensity
-- Revenue Leakage Risk
-- Future Customer Value
-- Next Best Product, when a valid recommendation episode exists
-
-Repeat Purchase and Weekly Demand Forecasting remain separate governed workflows.
+The eligible Decision Engine channels are **Reactivation Propensity**, **Revenue Leakage Risk**, **Future Customer Value**, and **Next Best Product** when a valid recommendation episode is present. **Repeat Purchase Propensity** and **Weekly Demand Forecasting** remain standalone governed workflows.
 
 ### Operational Boundaries
-
-The decision engine is deliberately separated from subsequent operations:
 
 ```text
 Governed Decision Output
             |
             +--> Experiment Governance
-            |
             +--> CRM Delivery Preparation
-            |
             +--> Delivery Export / Audit
-            |
             +--> Monitoring & Health Checks
 ```
 
-These represent separate operational contracts, not an assertion that running the core decision batch automatically sends customer communications or executes experiments.
+These are separate operational contracts. Running the Decision Engine **does not automatically send communications or run experiments**.
 
-### Runtime Architecture
+### Production Runtime
 
-Three batch workloads are supported:
+Three batch workloads are supported: **month-end customer decisions**, **repeat-purchase scoring**, and **weekly demand forecasting**.
 
-1. Month-end customer decisions
-2. Repeat-purchase scoring
-3. Weekly demand forecasting
-
-A Python 3.11 Docker runtime provides the operational environment. The container runs as a non-root user.
-
-The scheduled-job wrapper accepts an explicit job name and business boundary. **Scheduling itself belongs to an external scheduler**, which is not provisioned by this repository.
-
-Production model binaries and operational state are kept separate from the curated public portfolio application.
+The Docker runtime is based on **Python 3.11**, executes as a **non-root user**, and is intentionally a **one-shot operational container**, not the public web server. An external scheduler supplies job dates and invocation; this repository does not provision that scheduler.
 
 ---
 
 ## 4. Interactive Streamlit Portfolio
 
-The Streamlit application provides an executive and technical exploration layer over portfolio-safe outputs.
+**[Open Revenue OS](https://revenue-os-ai.streamlit.app/)**
 
-### Explore the Revenue OS Platform
+The public application is an **11-page interactive portfolio** with executive, model, decision, governance, architecture, and testing views. It reads compact, curated, anonymised historical outputs rather than loading private raw transaction data or scoring production models at application startup.
 
-The interactive portfolio provides executive and technical views of the same governed production system.
+### Application Pages
 
-#### Revenue Command Centre
+| Section | Pages |
+|---|---|
+| **Command Centre** | Overview · Revenue Command Centre · Customer Decision Explorer |
+| **AI Intelligence** | Interactive Decision Demo · Decision Intelligence · ML / Model Explorer |
+| **Governance & Engineering** | Governance Dashboard · Production Architecture · Architecture Visuals · Testing & Reliability · Production Evidence |
+
+### Screenshots
+
+**Revenue Command Centre** — filters, customer-decision snapshots and commercial priorities.
 
 ![Revenue Command Centre](docs/screenshots/02-revenue-command-centre.png)
 
-*Explore the historical customer-decision snapshot through filters, commercial metrics, action priorities, and governance disclosures.*
-
-#### Risk × Value Intelligence
+**Risk × Value Intelligence** — governed leakage signals and modelled future customer value.
 
 ![Risk and Future Customer Value](docs/screenshots/03-risk-value-intelligence.png)
 
-*Examine governed leakage probabilities alongside modelled future customer value. Bubble size represents observed lifetime revenue; colour represents the governed action.*
-
-#### Customer Decision Explorer
+**Customer Decision Explorer** — anonymised decisions, classification and supporting evidence.
 
 ![Customer Decision Explorer](docs/screenshots/04-customer-decision-explorer.png)
 
-*Inspect anonymised customer-level decisions, supporting historical evidence, priority classification, and recommended actions.*
-
-#### Governance Dashboard
+**Governance Dashboard** — technical availability, permission, inclusion and evidence boundaries.
 
 ![Governance Dashboard](docs/screenshots/05-governance-dashboard.png)
 
-*Distinguish technical availability, governance permission, customer-decision inclusion, and supported commercial claims.*
-
-#### Production Architecture Visuals
+**Production Architecture Visuals** — system boundaries and intelligence workflows.
 
 ![Production Architecture Visuals](docs/screenshots/06-architecture-visuals.png)
 
-*Explore the boundary between governed customer-decision inputs, the deterministic Decision Engine, and standalone production intelligence systems.*
+*Screenshots represent curated, anonymised historical evidence, not live customer interventions or achieved revenue uplift.*
 
-**Evidence boundary:** These screenshots contain curated, anonymised historical outputs. They do not demonstrate realised commercial uplift or unrestricted autonomous interventions.
-
-
-
-Launch locally:
-
-```bash
-python -m streamlit run app.py
-```
-
-The application supports exploration of:
-
-- Customer decisions and commercial priorities
-- Governed decision logic
-- Model capabilities and limitations
-- Revenue risk and customer value
-- Repeat-purchase intelligence
-- Weekly demand forecasting
-- Model and decision governance
-- Production architecture
-- Architecture visualisations
-- Testing and reliability evidence
-
-The public presentation layer is designed to load compact, curated and anonymised datasets rather than running production scoring over the raw transaction dataset at startup.
-
-Selected lightweight decision-policy functionality can be demonstrated interactively without creating a second, conflicting set of business rules.
-
-**Live demo:** To be added following deployment verification.
+**Local launch:** See [8. Local Setup](#8-local-setup). The public cloud entry point is `streamlit_app/app.py`; the local portfolio can also be launched through the root `app.py`.
 
 ---
 
@@ -246,73 +200,70 @@ Selected lightweight decision-policy functionality can be demonstrated interacti
 
 ### Automated Testing
 
-The latest completed full regression reported:
+The verified v1.0.0 release regression reported:
 
 ```text
-1850 passed, 1 warning
+1915 passed, 1 warning
 ```
 
-The following test-module and explicit-function inventory reflects an earlier audited snapshot; the latest total executed test count is 1,915.
+The portfolio-specific suite reported:
 
-The latest verified full regression comprises:
+```text
+319 passed
+```
 
-| Evidence | Verified result |
+| Verification | Result |
 |---|---:|
-| Automated regression tests passing | 1,915 |
-| Portfolio-specific tests passing | 319 |
+| Full regression | 1,915 passed |
+| Portfolio subset (included in full regression) | 319 passed |
 | Test failures | 0 |
-| Nonfatal warnings | 1 |
+| Known nonfatal warnings | 1 |
+| Dependency integrity | No broken requirements |
 
-The earlier test inventory recorded 91 modules, 1,644 explicit test functions, and 196 collection-expanded cases. Those historical breakdown figures have not yet been recalculated for the latest regression.
+The warning originates in the Repeat Purchase invalid-date test, where pandas falls back to per-element date parsing. This warning is known and nonfatal.
 
-The known non-fatal warning occurs in the Repeat Purchase invalid-date handling test, where pandas reports a date-parsing format inference warning.
+An **earlier audited inventory**, not an updated enumeration of v1.0.0, recorded **91 test modules**, **1,644 explicitly defined test functions**, and **196 collection-expanded cases**. These counts should not be interpreted as an independent recalculation of the latest 1,915 executed tests.
 
-Testing covers contracts and behaviours across feature engineering, scoring, decision governance, portfolio data, operational workflows, and fail-closed conditions.
-
-To execute the full local regression:
+Run the full suite (with development dependencies, including `pytest`, installed):
 
 ```bash
 python -m pytest -q
 ```
 
-The test runner requires `pytest` to be installed in the active development environment.
-
-Portfolio-focused regression:
+Run the portfolio suite:
 
 ```bash
 python -m pytest tests/test_portfolio_*.py -q
 ```
 
-The latest verified portfolio suite passed **319 tests**.
+Tests cover model and feature contracts, temporal validation, scoring, customer decisioning, governance, operational workflows, application navigation, evidence integrity and fail-closed behaviour.
 
 ### Docker Smoke-Test Evidence
 
-The governed Docker execution produced:
-
-| Workload | Verified result |
+| Workload or control | Verified result |
 |---|---|
-| Customer decisions | 5,220 output rows |
-| Repeat-purchase scoring | 4,269 output rows |
-| Demand forecasting | 1-, 2- and 4-week forecasts |
-| Runtime | Linux, non-root execution verified |
-| Delivery controls | Duplicate delivery reruns rejected |
+| Customer decision batch | 5,220 output rows |
+| Repeat-purchase batch | 4,269 output rows |
+| Demand forecasting | 1-, 2- and 4-week horizons |
+| Container execution | Linux, non-root |
+| Delivery deduplication | Duplicate reruns rejected |
 | Audit | Persistent delivery audit verified |
-| Scheduling validation | Invalid demand business boundary rejected |
+| Scheduling contract | Invalid demand business boundary rejected |
 
-These are operational verification results from historical data, not claims of live commercial service or achieved uplift.
+These are **historical execution and engineering verification results**, not proof of realised commercial impact.
 
 ---
 
 ## 6. Research and Model Validation
 
-The repository preserves the original research workflow alongside production implementations.
+The repository preserves research workflows alongside production implementations.
 
 ### Research Notebooks
 
 | Notebook | Purpose |
 |---|---|
 | `01_Data_Cleaning.ipynb` | Canonical transaction preparation |
-| `02_ML_Repeat_Purchase_Model.ipynb` | Early-lifecycle repeat-purchase modelling |
+| `02_ML_Repeat_Purchase_Model.ipynb` | Early-lifecycle repeat purchase |
 | `03_ML_Reactivation_Propensity.ipynb` | Reactivation propensity |
 | `04_ML_Revenue_Leakage_Risk.ipynb` | Revenue leakage risk |
 | `05_ML_Future_Customer_Value.ipynb` | Future customer revenue prioritisation |
@@ -322,9 +273,7 @@ The repository preserves the original research workflow alongside production imp
 
 ### Selected Governed Research Metrics
 
-These are historical evaluation metrics, not realised business impact.
-
-| Model | Metric | Verified value |
+| Model | Evaluation metric | Historical value |
 |---|---|---:|
 | Future Customer Value | Stage A PR-AUC | 0.822148 |
 | Future Customer Value | Complete-model Spearman | 0.550464 |
@@ -333,20 +282,12 @@ These are historical evaluation metrics, not realised business impact.
 | Discovery Recommendation | Holdout Hit Rate@20 | 0.299238 |
 | Repeat Purchase | Test ROC-AUC | 0.560 |
 | Repeat Purchase | Test PR-AUC | 0.503 |
-| Demand Forecast | Approximate 1-week historical WAPE | 0.1652 |
-| Demand Forecast | Approximate 4-week historical WAPE | 0.1684 |
+| Demand Forecast | Approx. 1-week historical WAPE | 0.1652 |
+| Demand Forecast | Approx. 4-week historical WAPE | 0.1684 |
 
-The Repeat Purchase and discovery recommendation results are intentionally presented with their conditional governance context.
+These values are historical evaluation results—not causal or realised commercial uplift. Repeat Purchase and discovery recommendation systems retain their conditional governance status. No unsupported headline metric is assigned to Reactivation or Revenue Leakage where governed manifests do not expose an equivalent locked final value.
 
-Reactivation and Revenue Leakage models do not receive invented headline performance metrics where their governed production manifests do not expose equivalent locked final values.
-
-### Historical Research Population
-
-The original research README records **5,224 identified customers** in the August 2011 historical decision snapshot.
-
-The separately verified Docker smoke execution generated **5,220 customer decision rows**.
-
-These figures originate from different documented evidence contexts and should not be presented as interchangeable population counts.
+**Population distinction:** The earlier research documentation identified **5,224 customers** in an August 2011 snapshot. The separately verified Docker execution generated **5,220 customer decision rows**. These represent different evidence contexts and must not be conflated.
 
 ---
 
@@ -354,52 +295,29 @@ These figures originate from different documented evidence contexts and should n
 
 ### Temporal Integrity
 
-Time-dependent scoring must respect the information available at the decision boundary.
+- Features must not use outcomes unavailable at the scoring boundary.
+- Training/evaluation eligibility is separate from operational eligibility.
+- Customer lifecycle changes can invalidate prior scores.
+- Recommendation episodes cannot be rebuilt using future-conditioned research outcomes.
+- Demand forecasts are bounded by complete observed weekly periods.
 
-Key controls include:
+### Fail-Closed Contracts
 
-- Features must not use future outcomes.
-- Training and evaluation eligibility must be separated from production eligibility.
-- Model predictions must remain valid for the customer's current lifecycle state.
-- Later customer events can invalidate earlier scores.
-- Recommendation episodes cannot be reconstructed from future-conditioned research evaluation data.
-- Demand forecasts must respect complete observed weekly periods.
+Unsupported conditions are rejected rather than silently accepted. Examples include missing required fields, schema drift, invalid forecast origins or horizons, duplicate delivery IDs, malformed audit records, and invalid model or score eligibility.
 
-### Fail-Closed Design
+### Experimentation and Causal Claims
 
-Unsupported or invalid operations are rejected rather than silently interpreted as valid inputs.
+A propensity score does not establish that an intervention caused a sale. Incremental impact requires appropriately controlled treatment-versus-control measurement. Discovery recommendations are subject to **CONDITIONAL GO** governance and controlled validation.
 
-Examples include:
+### Financial Interpretation
 
-- Missing required features
-- Schema drift
-- Invalid forecast origin dates
-- Unsupported forecast horizons
-- Duplicate delivery identifiers
-- Malformed audit records
-- Invalid model or score eligibility
+- **Revenue leakage exposure** is a prioritisation proxy, not calibrated accounting loss.
+- **Future Customer Value** estimates positive merchandise revenue over a governed horizon—not lifetime value, margin or guaranteed income.
+- Product recommendations do not currently include live inventory availability gating.
 
-### Experimentation
+### Intervention Policy
 
-A propensity prediction does not prove that a customer intervention caused an outcome.
-
-Incremental commercial impact requires an appropriate treatment-control experiment.
-
-Discovery recommendations remain subject to CONDITIONAL GO governance and controlled testing.
-
-### Revenue and Risk Interpretation
-
-Revenue leakage exposure is a prioritisation proxy, **not calibrated expected accounting loss**.
-
-Future Customer Value describes expected positive merchandise revenue over a governed horizon, not lifetime value, contribution margin or guaranteed revenue.
-
-The system does not currently provide live inventory availability gating for product recommendations.
-
-### Autonomous Intervention
-
-The project is designed for governed decision support, controlled CRM prioritisation, and experimentation.
-
-It is not approved for unrestricted autonomous customer intervention.
+Revenue OS supports governed decision support, CRM preparation, prioritisation and experimentation. **The v1.0.0 portfolio is not authorised for unrestricted autonomous customer interventions.**
 
 ---
 
@@ -407,88 +325,75 @@ It is not approved for unrestricted autonomous customer intervention.
 
 ### Requirements
 
-- Python 3.11 is the Docker runtime baseline.
-- A Python environment with the packages in `requirements.txt`.
-- Additional development tooling such as `pytest` for test execution.
-- Curated portfolio data for the Streamlit application.
-- Separately provisioned governed model binaries and canonical transaction data for production scoring workflows.
+- Python 3.11 is the production Docker baseline.
+- Portfolio dependencies are defined separately from production runtime dependencies.
+- `pytest` is required to run development tests.
+- Production scoring requires separately provisioned canonical data, governed model artifacts and operational state.
 
-Clone the repository:
+Clone:
 
 ```bash
 git clone https://github.com/vaatiian/ai-revenue-decision-engine.git
 cd ai-revenue-decision-engine
 ```
 
-Create and activate a Python environment:
+Create an environment:
 
 ```bash
 python -m venv .venv
 ```
 
-On Windows:
+Activate on **Windows PowerShell**:
 
-```bash
-.venv\Scripts\activate
+```powershell
+.venv\Scripts\Activate.ps1
 ```
 
-On Linux or macOS:
+Or on **macOS/Linux**:
 
 ```bash
 source .venv/bin/activate
 ```
 
-Install application dependencies:
+Install portfolio dependencies:
 
 ```bash
-python -m pip install -r requirements.txt
+python -m pip install -r requirements-portfolio.txt
 ```
 
-For development tests:
-
-```bash
-python -m pip install pytest
-```
-
-Launch the portfolio:
+Start the portfolio:
 
 ```bash
 python -m streamlit run app.py
 ```
 
-### Important Data Boundary
+For the production runtime dependencies, use the separate requirements file:
 
-The public portfolio application and the production scoring runtime have different dependencies.
+```bash
+python -m pip install -r requirements.txt
+```
 
-Cloning the repository and installing Python packages does not automatically provision private data, trained model binaries, or persistent operational state.
+For development tests, install `pytest` in your chosen compatible environment and run the applicable test commands from [5. Verified Engineering Evidence](#5-verified-engineering-evidence).
 
-Production commands require their relevant governed inputs and manifests.
+> **Reproducibility boundary:** A fresh clone does not automatically include all private datasets, production model binaries, source manifests, audit state or external scheduler configuration. The public portfolio is intentionally separate from those operational dependencies.
 
 ---
 
 ## 9. Production Command-Line Interface
 
-The operational entry point is:
-
-```bash
-python -m src.cli
-```
-
-Inspect available operations:
+The governed operational interface is:
 
 ```bash
 python -m src.cli --help
 ```
 
-### Runtime Health
+Runtime health (including governed model-source verification by default):
 
 ```bash
 python -m src.cli health
 ```
 
-By default, the health command verifies governed model source hashes. A diagnostic option is available to disable that particular check, but should not be treated as equivalent to the fully verified health path.
-
-### Month-End Customer Decision Batch
+Month-end customer decisions:
 
 ```bash
 python -m src.cli customer-batch \
@@ -497,16 +402,9 @@ python -m src.cli customer-batch \
   --output-dir /path/to/outputs
 ```
 
-Optional parameters include:
+Optional inputs include `--recommendation-episodes PATH` and `--delivery-audit PATH`; inputs must satisfy their respective production contracts.
 
-```text
---recommendation-episodes PATH
---delivery-audit PATH
-```
-
-A recommendation episode must meet its production governance contract. The delivery audit is a separate persistent operational concern.
-
-### Repeat Purchase Batch
+Repeat-purchase scoring:
 
 ```bash
 python -m src.cli repeat-purchase \
@@ -515,9 +413,9 @@ python -m src.cli repeat-purchase \
   --output-dir /path/to/outputs
 ```
 
-An optional `--include-opening-month` flag changes the historical-parity opening-month exclusion policy.
+The optional `--include-opening-month` flag changes the historical-parity opening-month exclusion policy.
 
-### Weekly Demand Forecast
+Weekly demand forecasting:
 
 ```bash
 python -m src.cli demand \
@@ -527,35 +425,27 @@ python -m src.cli demand \
   --horizons 1 2 4
 ```
 
-The forecast origin must be a valid Monday week-start representing the final complete observed week.
+The forecast-origin week must be a valid Monday representing the last complete observed week. Supported horizons are **1, 2 and 4 weeks** only.
 
-Only the governed horizons of **1, 2 and 4 weeks** are supported.
-
-All dates above illustrate the documented historical boundary format. Successful execution also depends on valid data, model artifacts, source verification, and writable output locations.
+*The dates shown are documented historical example boundaries; commands require appropriate governed inputs and artifacts to execute successfully.*
 
 ---
 
 ## 10. Docker and Scheduled Operations
 
-Build the production runtime image:
+Build the one-shot production runtime:
 
 ```bash
 docker build -t ai-revenue-decision-engine .
 ```
 
-The Dockerfile uses `python:3.11-slim` and runs the application as a non-root user.
-
-Its default operation is:
+The image uses `python:3.11-slim`, runs as a non-root user, and defaults to the health operation:
 
 ```bash
 python -m src.cli health
 ```
 
-The image is intentionally a one-shot operational runtime, not an always-running web server.
-
-### External Scheduler Contract
-
-The scheduled-job wrapper supports:
+Supported external scheduler interface:
 
 ```text
 run_scheduled_job.sh customer YYYY-MM-DD
@@ -563,55 +453,35 @@ run_scheduled_job.sh repeat-purchase YYYY-MM-DD
 run_scheduled_job.sh demand YYYY-MM-DD
 ```
 
-It reads runtime paths from environment variables including:
+The wrapper accepts environment-provided configuration, including `DATA_PATH`, `OUTPUT_DIR`, `DELIVERY_AUDIT_PATH`, `RECOMMENDATION_EPISODES_PATH`, and `PYTHON_BIN`.
 
-```text
-DATA_PATH
-OUTPUT_DIR
-DELIVERY_AUDIT_PATH
-RECOMMENDATION_EPISODES_PATH
-PYTHON_BIN
-```
-
-The wrapper does not:
-
-- calculate its own execution dates;
-- decide month-end or Monday scheduling boundaries;
-- retrain models;
-- launch multiple workflows automatically;
-- provision an external scheduler.
-
-Runtime deployments must provide the required input data, model artifacts, persistent storage, permissions, and scheduling infrastructure.
+It does **not** derive scheduling dates, provision a scheduler, retrain models, or automatically execute several workflows. Runtime operators must supply storage, inputs, artifacts, permissions and scheduling infrastructure.
 
 ---
 
 ## 11. Portfolio Data and Privacy
 
-The public Streamlit application is separated from production source data and runtime state.
+The public presentation layer is separated from raw transactions and operational state. Curated outputs are generated under a restricted schema using deterministic anonymisation and explicit data classifications:
 
-Curated portfolio datasets are generated from governed outputs with deterministic anonymisation and a restricted field contract.
+- `PUBLIC`
+- `PUBLIC_AFTER_ANONYMISATION`
+- `TECHNICAL_SUMMARY_ONLY`
+- `EXCLUDED`
 
-Public data classifications include:
+The public application excludes raw transaction data, operational audit histories, sensitive research evaluation rows and private production model binaries.
 
-- PUBLIC
-- PUBLIC_AFTER_ANONYMISATION
-- TECHNICAL_SUMMARY_ONLY
-- EXCLUDED
-
-The public application excludes raw transaction datasets, operational audit histories, sensitive research evaluation rows, and production model binaries.
-
-See:
+Documentation:
 
 - [Portfolio Data Contract](portfolio/PORTFOLIO_DATA_CONTRACT.md)
 - [Portfolio Narrative](portfolio/PORTFOLIO_NARRATIVE.md)
 
-The deterministic portfolio-data generator is:
+The deterministic generator is:
 
 ```bash
 python portfolio/generate_portfolio_data.py
 ```
 
-This generator requires its documented governed source artifacts. It is not necessary to regenerate those artifacts simply to explore an already prepared public portfolio.
+It requires its documented governed source artifacts. You do not need to rerun it to explore an already prepared portfolio deployment.
 
 ---
 
@@ -619,93 +489,91 @@ This generator requires its documented governed source artifacts. It is not nece
 
 ```text
 ai-revenue-decision-engine/
-├── app.py                     # Streamlit portfolio application
-├── portfolio/                 # Portfolio presentation and curated data
+├── app.py                       # Main Streamlit portfolio application
+├── streamlit_app/               # Streamlit Community Cloud entry point
+├── portfolio/                   # UI, curated data, architecture and evidence views
 │   ├── data/
-│   ├── architecture_visuals.py
-│   ├── architecture_visuals_page.py
-│   ├── testing_reliability.py
 │   ├── generate_portfolio_data.py
-│   ├── PORTFOLIO_NARRATIVE.md
-│   └── PORTFOLIO_DATA_CONTRACT.md
+│   ├── architecture_visuals.py
+│   ├── testing_reliability.py
+│   ├── PORTFOLIO_DATA_CONTRACT.md
+│   └── PORTFOLIO_NARRATIVE.md
 ├── src/
-│   ├── data/                  # Production data contracts
-│   ├── features/              # Production feature builders
-│   ├── models/                # Model and forecast contracts
-│   ├── scoring/               # Governed scoring
-│   ├── decision_engine/       # Decision orchestration
-│   ├── deployment/            # Production batch workloads
-│   ├── monitoring/            # Operational health
-│   └── cli.py                 # Operational CLI
-├── tests/                     # Automated validation
-├── notebooks/                 # Research and evaluation
-├── artifacts/                 # Governed model metadata and artifacts
-├── config/                    # Configuration
-├── scripts/
-│   └── run_scheduled_job.sh
-├── docs/                      # Technical documentation
-├── Dockerfile
-├── requirements.txt
+│   ├── data/                    # Canonical data contracts
+│   ├── features/                # Feature engineering
+│   ├── models/                  # Model and forecast interfaces
+│   ├── scoring/                 # Governed scorers
+│   ├── decision_engine/         # Customer decision orchestration
+│   ├── deployment/              # Batch execution
+│   ├── monitoring/              # Runtime health
+│   └── cli.py                   # Operational CLI
+├── tests/                       # Automated regression tests
+├── notebooks/                   # Research and model evaluation
+├── artifacts/                   # Governed artifacts and metadata
+├── config/                      # Configuration
+├── scripts/                     # Scheduled-job wrapper
+├── docs/screenshots/            # Portfolio captures
+├── .streamlit/                  # UI configuration
+├── Dockerfile                   # One-shot production runtime
+├── requirements.txt             # Production dependencies
+├── requirements-portfolio.txt   # Public portfolio dependencies
 └── README.md
 ```
 
-The public portfolio is an inspection and demonstration interface. The production engine remains the source of operational decision and scoring behaviour.
+The public Streamlit interface demonstrates and inspects governed system behaviour; it does not replace the production scoring and decision implementation.
 
 ---
 
 ## 13. Project Status and Roadmap
 
-### Implemented and Verified
+### v1.0.0 — Released (29 October 2026)
 
-- Research pipeline and governed model specifications
-- Six production scoring systems
-- Customer decision orchestration
-- Priority and contact policies
-- CRM delivery and audit controls
-- Experiment governance
-- Runtime health monitoring
-- Three production batch interfaces
-- Docker smoke execution
-- Curated public portfolio data
-- Interactive Streamlit exploration
-- Architecture visualisations
-- Testing and reliability evidence
+The first public portfolio release is tagged as **[`v1.0.0`](https://github.com/vaatiian/ai-revenue-decision-engine/releases/tag/v1.0.0)** at commit **`51cd2ab9dd220ee4c408d197c2bb7ffe2e4b1792`**.
 
-### Remaining Portfolio Release Work
+**Implemented and verified:**
 
-- Final GitHub documentation and screenshot publication verification
-- Demo media
-- Portfolio application testing
-- End-to-end quality assurance
-- Public deployment
-- Final `v1.0.0` release and repository cleanup
+- Research workflows and governed model specifications
+- Six production intelligence systems
+- Customer-level Decision Engine with prioritisation and contact policies
+- CRM delivery preparation, audit and duplicate protection
+- Experiment governance and runtime health controls
+- Three operational batch interfaces and Docker smoke execution
+- Curated, anonymised portfolio data
+- Public 11-page Streamlit experience
+- Architecture explorer, testing and reliability views
+- 1,915-test project regression and 319-test portfolio subset
+- Public deployment, published screenshots and versioned Git tag
 
-A verified Docker smoke test is not equivalent to a completed public cloud deployment.
+### Post-v1.0.0 Priorities
+
+1. Deployment health monitoring and browser-based visual regression checks.
+2. Additional runtime observability and model-drift monitoring.
+3. Enterprise integration and CRM/API readiness.
+4. Controlled live intervention experiments, subject to permissions and governance.
+5. Credible measurement and attribution of incremental commercial impact.
+
+**Release scope:** v1.0.0 is a production-oriented engineering demonstration and public portfolio release. It is not a claim of an unrestricted, production-operating customer campaign service.
 
 ---
 
 ## 14. Responsible Interpretation
 
-This repository demonstrates the full engineering path from transaction data through machine learning to governed operational recommendations.
-
-Its results must be interpreted according to their evidence category:
-
-| Evidence category | Meaning |
+| Evidence category | What it supports |
 |---|---|
-| Model evaluation | Historical research or test-set performance |
-| Production smoke execution | Evidence that governed code ran against a specified historical workload |
-| Operational capability | A supported engineering interface or control |
-| Portfolio demonstration | A curated representation of verified system behaviour |
-| Realised business impact | Measured outcomes attributable to real-world interventions |
+| **Model evaluation** | Historical research and test-set performance |
+| **Production smoke execution** | Verified governed code execution on specified historical inputs |
+| **Operational capability** | Available engineering interfaces and controls |
+| **Portfolio demonstration** | Curated inspection of verified historical system outputs |
+| **Realised business impact** | Requires measured real-world outcomes and an appropriate causal basis |
 
-**No realised revenue uplift, retention uplift, or conversion uplift is claimed without measured experimental evidence.**
+**No incremental revenue, retention or conversion uplift is claimed without valid experimental evidence.**
 
 ---
 
 ## 15. Project Principle
 
-> Predictions are not decisions. Decisions are not interventions. Interventions are not impact.
+> **Predictions are not decisions. Decisions are not interventions. Interventions are not impact.**
 
-The AI Revenue Decision Engine is designed to make these boundaries explicit, testable, auditable, and operationally useful.
+Revenue OS is designed to make those distinctions explicit, testable, auditable and commercially useful.
 
-**From transactions to governed revenue decisions.**
+**From retail transactions to governed revenue decisions.**
